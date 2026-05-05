@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-container": "#acb2ba",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#d9e3f3",
+                        "inverse-primary": "#bcc7de",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#233144",
+                        "secondary": "#555f6c",
+                        "on-secondary-container": "#5b6573",
+                        "tertiary": "#595f66",
+                        "surface-variant": "#d5e3fc",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0d1c2e",
+                        "primary": "#545f73",
+                        "on-primary-container": "#394457",
+                        "outline-variant": "#c5c6cc",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "surface-tint": "#545f73",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#d8e3fb",
+                        "surface-container-high": "#dce9ff",
+                        "primary-fixed-dim": "#bcc7de",
+                        "on-secondary-fixed": "#121c27",
+                        "error-container": "#ffdad6",
+                        "outline": "#75777c",
+                        "on-tertiary-fixed": "#161c22",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "primary-container": "#a6b2c9",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7d7",
+                        "on-tertiary-container": "#3e454b",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-container": "#e6eeff",
+                        "on-primary-fixed": "#111c2d",
+                        "surface-dim": "#ccdbf3",
+                        "on-secondary-fixed-variant": "#3e4854",
+                        "on-surface-variant": "#44474b",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d9e3f3",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0d1c2e",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d5e3fc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .steel-gradient {
+            background: linear-gradient(135deg, #545f73 0%, #a6b2c9 100%);
+        }
+        .milled-surface {
+            background: linear-gradient(145deg, #ffffff, #eff4ff);
+            box-shadow: 12px 12px 24px #e2e8f5, -12px -12px 24px #ffffff;
+        }
+        .monolith-shadow {
+            box-shadow: 0 40px 80px -20px rgba(13, 28, 46, 0.08);
+        }
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(84, 95, 115, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(84, 95, 115, 0.05) 1px, transparent 1px);
+        }
+        .micro-grid {
+            background-size: 8px 8px;
+            background-image: linear-gradient(to right, rgba(84, 95, 115, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(84, 95, 115, 0.03) 1px, transparent 1px);
+        }
+        .circuit-line {
+            position: absolute;
+            background: rgba(84, 95, 115, 0.15);
+            z-index: 0;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+<nav class="flex justify-between items-center w-full px-12 py-8 max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-slate-900 font-headline">Синтегратор</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Услуги</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 border-b border-slate-900 pb-1 transition-all duration-300" href="#">Отрасли</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Кейсы</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">О компании</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Контакты</a>
+</div>
+<button class="steel-gradient text-on-primary px-8 py-3 font-headline text-sm font-bold tracking-widest uppercase hover:opacity-80 transition-all duration-300 active:scale-[0.98] border-t border-white/30">
+            Discuss Project
+        </button>
+</nav>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="relative min-h-[600px] flex items-center px-12 max-w-[1920px] mx-auto mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+<div class="lg:col-span-8 z-10">
+<span class="inline-block py-1 px-3 bg-surface-container-highest text-primary font-headline text-[10px] font-bold tracking-[0.3em] uppercase mb-8">Industry Expertise</span>
+<h1 class="font-headline text-7xl md:text-8xl font-bold text-on-background leading-[0.9] tracking-tighter mb-8">
+                    Отраслевая экспертиза<br/>
+<span class="text-primary-container">в холодном металле</span>
+</h1>
+</div>
+<div class="lg:col-span-4 z-10">
+<p class="text-xl text-on-surface-variant leading-relaxed font-light max-w-md">
+                    Мы проектируем цифровые экосистемы с точностью станков с ЧПУ. Интеграция как искусство промышленной архитектуры.
+                </p>
+</div>
+</div>
+</section>
+<!-- Industries Grid (Architecture Synthesis) -->
+<section class="px-12 max-w-[1920px] mx-auto mb-40 relative blueprint-grid py-24 overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-full micro-grid opacity-30 pointer-events-none"></div>
+<!-- Background Architectural Title -->
+<div class="absolute -top-10 right-12 opacity-[0.03] select-none pointer-events-none">
+<h2 class="text-[20rem] font-headline font-bold uppercase tracking-tighter leading-none">DOMAINS</h2>
+</div>
+<div class="relative z-10">
+<div class="mb-20">
+<h2 class="font-headline text-5xl font-bold tracking-tighter mb-4 text-center">ПРОТОКОЛ ОТРАСЛЕЙ</h2>
+<div class="w-32 h-1 steel-gradient mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 relative border border-outline-variant/30 bg-white/50 backdrop-blur-sm">
+<!-- Circuitry Lines (Visual Accents) -->
+<div class="circuit-line w-full h-px top-1/2 left-0 hidden md:block"></div>
+<div class="circuit-line h-full w-px left-2/3 top-0 hidden md:block"></div>
+<!-- Block 1: Manufacturing (Primary Focus) -->
+<div class="md:col-span-8 border-b border-r border-outline-variant/30 relative group overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-10 group-hover:opacity-25 transition-opacity duration-1000 grayscale bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkZdtq2c5CyUtVf8897tyt9u9HUWy_nFUSKrsU-HIaeZjleoL1Ba6SdTCDRMc5cLOeLWf86nHCb1X0WkTOcrulc3A2xAISDLLos1zAQsdXOU0UFTlqMkKD_l_mF3Yp8CP7o-HH_aUyvcn3wsNldUNNeBvksyAD6EZhdj1gZUGScPAmHvF2Kq_ZXxfb55tkeqS7laeU3D2nRNqADGGBrF8jOy3E0AuV21e02DS33PYhIAUArWaPKF3gU_B1qUAMMZZTgpvwuFOee6hN')"></div>
+<div class="p-16 relative z-10 h-full flex flex-col justify-between min-h-[500px]">
+<div>
+<div class="flex items-center gap-4 mb-12">
+<div class="w-16 h-16 glass-panel rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<span class="font-headline text-[10px] tracking-[0.4em] text-outline font-bold uppercase">DOMAIN / MANUFACTURING</span>
+</div>
+<h3 class="font-headline text-5xl font-bold mb-8 tracking-tight">Производство</h3>
+<p class="text-lg text-on-surface-variant max-w-xl font-light leading-relaxed">Автоматизация цеховых процессов, внедрение MES-систем и предиктивная аналитика оборудования для заводов нового поколения.</p>
+</div>
+<div class="grid grid-cols-2 gap-12 pt-12 border-t border-outline-variant/20">
+<div>
+<h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Операционный KPI</h4>
+<p class="text-3xl font-headline font-bold text-on-background">24% <span class="text-xs uppercase font-label tracking-widest text-outline ml-2">снижение издержек</span></p>
+</div>
+<div>
+<h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Опыт внедрения</h4>
+<p class="text-3xl font-headline font-bold text-on-background">15+ <span class="text-xs uppercase font-label tracking-widest text-outline ml-2">крупных заводов</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Block 2: Logistics (The Graphite Monolith) -->
+<div class="md:col-span-4 border-b border-outline-variant/30 bg-inverse-surface relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 grayscale group-hover:scale-110 transition-transform duration-1000 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUyXhUpLr0spEHGpD78tIqpt56htyaQM6ErHMjXhmd2l0h5oFFOT8WogM0lYXcB8ooQOyEbLGB8cDGV0n7BeV7r0fSwd0dORbNJCUbTaV-QJkhOm-N8sUekELDoqN1Pfghe9Ivqlk9AotLKJTH1xdFJcZUtFFZlNkDbJeVSzmpfDtNwB94czfqdCDKG5Y3a-xksWMJtQlYLyIEBd3ZZ7jAj1WE-HvQJeDt2ykJ1Qq1WaW9VFa0Bl2IEdFO46Ajuv2_OInvhu00YFmY')"></div>
+<div class="p-16 h-full flex flex-col justify-between relative z-10">
+<div>
+<div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-10 border border-white/20">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-6 text-white leading-tight">Логистика</h3>
+<p class="text-sm text-slate-400 leading-relaxed">WMS нового поколения и сквозной мониторинг цепей поставок в реальном времени.</p>
+</div>
+<div class="mt-auto space-y-8">
+<div class="p-6 glass-panel !bg-white/5 border-white/10">
+<div class="text-3xl font-headline font-bold text-white mb-1">4.2 млн</div>
+<div class="text-[9px] uppercase font-bold text-slate-500 tracking-[0.3em]">ОПЕРАЦИЙ В СУТКИ</div>
+</div>
+<a class="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] text-white hover:gap-6 transition-all" href="#">
+                                EXPLORE CASES <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Block 3: B2B Wholesale (Steel Milled) -->
+<div class="md:col-span-4 border-r border-outline-variant/30 milled-surface relative group overflow-hidden">
+<div class="p-12 h-full flex flex-col justify-between relative z-10">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary mb-8 block opacity-40">hub</span>
+<h3 class="font-headline text-2xl font-bold mb-4 tracking-tight">B2B Опт</h3>
+<p class="text-sm text-on-surface-variant font-light mb-8">Цифровые платформы для дистрибуции: от личного кабинета до автоматического ценообразования.</p>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Рост чека</span>
+<span class="text-2xl font-headline font-bold text-primary">+45%</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Прозрачность</span>
+<span class="text-2xl font-headline font-bold text-primary">100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Block 4: Methodology (Architecture Schema Integration) -->
+<div class="md:col-span-8 relative bg-surface-bright/80 group">
+<div class="absolute inset-0 micro-grid opacity-20 pointer-events-none"></div>
+<div class="p-16 relative z-10 h-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h3 class="font-headline text-3xl font-bold mb-6 tracking-tight">Методология внедрения</h3>
+<p class="text-on-surface-variant font-light mb-8 leading-relaxed">Наш подход базируется на "Архитектурной жесткости" — каждый модуль системы проходит 4 уровня тестирования под нагрузкой.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container-highest text-[9px] font-bold uppercase tracking-widest text-primary">Reliability First</span>
+<span class="px-3 py-1.5 bg-surface-container-highest text-[9px] font-bold uppercase tracking-widest text-primary">Zero Downtime</span>
+<span class="px-3 py-1.5 bg-surface-container-highest text-[9px] font-bold uppercase tracking-widest text-primary">Scale Ready</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-6 p-4 border border-outline-variant/20 hover:border-primary/40 transition-colors bg-white/50">
+<span class="text-2xl font-headline font-bold text-outline-variant">01</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em]">Аудит инфраструктуры</span>
+</div>
+<div class="flex items-center gap-6 p-4 border border-outline-variant/20 hover:border-primary/40 transition-colors bg-white/50">
+<span class="text-2xl font-headline font-bold text-outline-variant">02</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em]">Проектирование ядра</span>
+</div>
+<div class="flex items-center gap-6 p-4 border border-outline-variant/20 hover:border-primary/40 transition-colors bg-white/50">
+<span class="text-2xl font-headline font-bold text-outline-variant">03</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em]">Бесшовная миграция</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-40 px-12 max-w-[1920px] mx-auto">
+<div class="bg-on-background p-24 relative overflow-hidden monolith-shadow">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<img alt="Industrial architecture" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBexToGP45-78oW8ITLg4C60k62TOunqsxnhX2GEDHBDFxPOed7XVxo7RHmuZHrj4z5XzZr7k2uBJpmf9OVytFX-l-wvS-vzh0VPZ-Yf3iqbNlKWNu8rz80yC8VdLWTU1h6KruCY3pGadSh85QUkDafnve6VuT4_Huk_87avYTZkGan1JhoRnFu0aKWPtS5nIpd9gd0_AZ1OuFNp0lllBAjGkyAEfma24j7hRQ4UCWORdxUfP2KgX-GXNzRopYCj5WruOOC1HieKmDc"/>
+</div>
+<div class="relative z-10 max-w-3xl">
+<h2 class="font-headline text-6xl font-bold text-white mb-10 tracking-tighter leading-none">Готовы закалить <br/> <span class="text-primary-container">свой бизнес в цифре?</span></h2>
+<p class="text-xl text-slate-400 mb-12 font-light">Получите индивидуальную архитектурную карту решения для вашей отрасли в течение 48 часов.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="steel-gradient text-on-primary px-12 py-5 font-headline text-sm font-bold tracking-[0.2em] uppercase hover:opacity-90 transition-all border-t border-white/20">
+                        Запросить консультацию
+                    </button>
+<button class="border border-slate-700 text-white px-12 py-5 font-headline text-sm font-bold tracking-[0.2em] uppercase hover:bg-slate-800 transition-all">
+                        Скачать презентацию
+                    </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-slate-100 border-t border-slate-200/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1920px] mx-auto">
+<div>
+<div class="text-xl font-bold tracking-tighter text-slate-900 mb-8">Синтегратор</div>
+<p class="text-slate-500 font-['Inter'] text-sm leading-relaxed">Профессиональное проектирование и внедрение систем автоматизации для промышленности и крупного бизнеса.</p>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Навигация</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Услуги</a></li>
+<li><a class="text-slate-900 font-semibold font-['Inter'] text-sm" href="#">Отрасли</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Кейсы</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Поддержка</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Политика конфиденциальности</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Условия использования</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Контакты</h5>
+<div class="text-slate-500 font-['Inter'] text-sm mb-2">Москва, Пресненская набережная, 12</div>
+<div class="text-slate-900 font-bold text-lg">+7 (495) 000-00-00</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-slate-200/40 max-w-[1920px] mx-auto flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+<div>© 2024 Синтегратор. Все права защищены.</div>
+<div class="flex gap-8">
+<a class="hover:text-slate-900 transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-slate-900 transition-colors" href="#">Telegram</a>
+</div>
+</div>
+</footer>
+</body></html>

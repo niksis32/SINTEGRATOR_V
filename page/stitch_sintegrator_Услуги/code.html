@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-container": "#acb2ba",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#d9e3f3",
+                        "inverse-primary": "#bcc7de",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#233144",
+                        "secondary": "#555f6c",
+                        "on-secondary-container": "#5b6573",
+                        "tertiary": "#595f66",
+                        "surface-variant": "#d5e3fc",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0d1c2e",
+                        "primary": "#545f73",
+                        "on-primary-container": "#394457",
+                        "outline-variant": "#c5c6cc",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "surface-tint": "#545f73",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#d8e3fb",
+                        "surface-container-high": "#dce9ff",
+                        "primary-fixed-dim": "#bcc7de",
+                        "on-secondary-fixed": "#121c27",
+                        "error-container": "#ffdad6",
+                        "outline": "#75777c",
+                        "on-tertiary-fixed": "#161c22",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "primary-container": "#a6b2c9",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#bdc7d7",
+                        "on-tertiary-container": "#3e454b",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-container": "#e6eeff",
+                        "on-primary-fixed": "#111c2d",
+                        "surface-dim": "#ccdbf3",
+                        "on-secondary-fixed-variant": "#3e4854",
+                        "on-surface-variant": "#44474b",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d9e3f3",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0d1c2e",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d5e3fc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .steel-gradient {
+            background: linear-gradient(135deg, #545f73 0%, #a6b2c9 100%);
+        }
+        .milled-surface {
+            background: linear-gradient(145deg, #ffffff, #eff4ff);
+            box-shadow: 12px 12px 24px #e2e8f5, -12px -12px 24px #ffffff;
+        }
+        .monolith-shadow {
+            box-shadow: 0 40px 80px -20px rgba(13, 28, 46, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+<nav class="flex justify-between items-center w-full px-12 py-8 max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-slate-900">Синтегратор</div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 border-b border-slate-900 pb-1" href="#">Услуги</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Отрасли</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Кейсы</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">О компании</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Контакты</a>
+</div>
+<button class="steel-gradient text-on-primary px-8 py-3 font-headline text-sm font-bold tracking-widest uppercase hover:opacity-80 transition-all duration-300 active:scale-[0.98] border-t border-white/30">
+                Discuss Project
+            </button>
+</nav>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="relative min-h-[716px] flex items-center px-12 max-w-[1920px] mx-auto mb-24">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center w-full">
+<div class="z-10">
+<span class="inline-block py-1 px-3 bg-surface-container-highest text-primary font-headline text-[10px] font-bold tracking-[0.3em] uppercase mb-8">Industrial Excellence</span>
+<h1 class="font-headline text-7xl md:text-8xl font-bold text-on-background leading-[0.9] tracking-tighter mb-8">
+                        Бизнес-ценность <br/> <span class="text-primary-container">технологий</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed font-light">
+                        Проектируем и внедряем отказоустойчивые цифровые экосистемы для крупного бизнеса. Переводим техническую сложность в операционную эффективность.
+                    </p>
+</div>
+<div class="relative aspect-square">
+<div class="absolute inset-0 bg-surface-container-highest rounded-xl monolith-shadow transform rotate-3"></div>
+<img alt="Hyper-realistic futuristic data center interior with polished steel and glowing digital nodes" class="absolute inset-0 w-full h-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_ptym7yjuI0HY7_M9wjtpx5TROBCpZrelthPDIdFXLhTbQQ60wXXjw4Cadh_QICFx9bBNE2_KbBH754lZ999Fo2Z5Iu_9cM4iH61kRAl2MLkf7FpaBj32danvkz6wzi9GrllRTda3wlI4QNYjDCNg1SM5hzjmMeeuaUwfD92q9EKzu9jgd4bKtxlIMJqXBLiHSyIspubU0cka_32rg0BryH4wkL6stxqRLvA9fVkN6TH5_8SU1i_aftWYcQpupemwy7DD2xw20S-o"/>
+<div class="absolute -bottom-10 -left-10 p-12 bg-surface-bright backdrop-blur-xl monolith-shadow max-w-xs">
+<span class="block font-headline text-5xl font-bold text-primary mb-2">99.9%</span>
+<p class="text-xs uppercase tracking-widest text-outline font-bold">Uptime Service Level</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Grid (Asymmetric Bento) -->
+<section class="px-12 max-w-[1920px] mx-auto mb-40">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Service 1: Integration -->
+<div class="md:col-span-8 group">
+<div class="milled-surface p-16 h-full transition-all duration-500 hover:translate-y-[-8px]">
+<div class="flex justify-between items-start mb-16">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-headline text-xs tracking-widest text-outline-variant font-bold uppercase">01 / Integration</span>
+</div>
+<h3 class="font-headline text-4xl font-bold mb-6 tracking-tight">Интеграция Bitrix24 и 1С ERP</h3>
+<p class="text-lg text-on-surface-variant mb-12 max-w-2xl">Создаем бесшовный обмен данными между фронт-офисом и производством. Автоматизация сквозных бизнес-процессов от лида до отгрузки.</p>
+<div class="grid grid-cols-2 gap-8 border-t border-outline-variant/20 pt-12">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Техстек</h4>
+<p class="text-sm font-medium">SOAP/REST, RabbitMQ, Enterprise Service Bus</p>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Результат</h4>
+<p class="text-sm font-medium">Снижение издержек на ввод данных на 40%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Service 2: CRM -->
+<div class="md:col-span-4">
+<div class="bg-inverse-surface p-12 h-full text-white flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim mb-8">hub</span>
+<h3 class="font-headline text-3xl font-bold mb-6">CRM для сложных продаж</h3>
+<p class="text-sm text-slate-400 leading-relaxed">Разработка кастомных воронки для B2B с циклом сделки от 6 месяцев. Прогностическая аналитика и скоринг.</p>
+</div>
+<a class="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] mt-12 hover:gap-6 transition-all" href="#">
+                            Explore Solution <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 3: API -->
+<div class="md:col-span-4">
+<div class="milled-surface p-12 h-full">
+<span class="material-symbols-outlined text-4xl text-primary mb-8">api</span>
+<h3 class="font-headline text-2xl font-bold mb-4">API-интеграции</h3>
+<p class="text-sm text-on-surface-variant mb-8">Разработка высоконагруженных API-шлюзов для объединения разрозненных сервисов в единый контур.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-[10px] font-bold uppercase tracking-tighter">Microservices</span>
+<span class="px-3 py-1 bg-surface-container text-[10px] font-bold uppercase tracking-tighter">Scalable</span>
+</div>
+</div>
+</div>
+<!-- Service 4: B2B Portals -->
+<div class="md:col-span-8">
+<div class="relative overflow-hidden group h-full">
+<img alt="Modern automated factory floor with robotic arms" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqSIFXkZJcD52w8ThOh5vhuigkjPYlSwvVSgi4EKV4BHC1CImrffkB3EDYy_nwp4WqV4RAl_izhcmuCm1cDFPhcgGOGw_7qeAXwdJrIaYF07U2MO76-o9P34ePqcr5tGjfEStispBN-njsuBGMJTQkbFb_hngHjpIUmItGAS8tIJjX08_YuaJSBAtrqJQTaEnDaXPEjwH7O1O7NFCQRjsqylYzBj8mawAHzbkK8Qfl2XyNkpbFGxY1mkY15k9nhnnZPKH3lLx_o7bv"/>
+<div class="absolute inset-0 bg-on-background/80 backdrop-blur-sm group-hover:backdrop-blur-none transition-all duration-500"></div>
+<div class="relative p-16 flex flex-col h-full justify-center">
+<h3 class="font-headline text-5xl font-bold text-white mb-6">B2B Порталы</h3>
+<p class="text-lg text-slate-300 max-w-xl mb-10">Личные кабинеты для дилеров и партнеров. Онлайн-заказы, складские остатки в реальном времени и документооборот.</p>
+<div class="flex gap-12">
+<div class="text-center">
+<div class="text-3xl font-headline font-bold text-primary-container">24/7</div>
+<div class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Self-Service</div>
+</div>
+<div class="text-center">
+<div class="text-3xl font-headline font-bold text-primary-container">-30%</div>
+<div class="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Manager Load</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Architecture Schema -->
+<section class="bg-surface-container-low py-32 px-12">
+<div class="max-w-[1920px] mx-auto text-center mb-24">
+<span class="font-headline text-xs tracking-widest text-primary font-bold uppercase mb-4 block">Blueprint</span>
+<h2 class="font-headline text-5xl font-bold tracking-tighter">Архитектура решений</h2>
+</div>
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-1 relative">
+<!-- Connector lines simulated with grid borders & absolute positioning -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-outline-variant opacity-20 -z-10"></div>
+<div class="bg-surface-bright p-10 monolith-shadow text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary">dns</span>
+</div>
+<h4 class="font-headline font-bold uppercase text-xs tracking-widest mb-4">Core Systems</h4>
+<p class="text-xs text-on-surface-variant">ERP, Warehouse, Legacy Databases</p>
+</div>
+<div class="bg-surface-bright p-10 monolith-shadow text-center scale-110 z-10 border-x border-surface-container">
+<div class="w-16 h-16 rounded-full steel-gradient flex items-center justify-center mx-auto mb-6 shadow-xl">
+<span class="material-symbols-outlined text-white">sync_alt</span>
+</div>
+<h4 class="font-headline font-bold uppercase text-xs tracking-widest mb-4">Sintegrator Layer</h4>
+<p class="text-xs text-on-surface-variant">Logic, Data Mapping, Security Gateways</p>
+</div>
+<div class="bg-surface-bright p-10 monolith-shadow text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<h4 class="font-headline font-bold uppercase text-xs tracking-widest mb-4">Client Access</h4>
+<p class="text-xs text-on-surface-variant">CRM, Mobile App, Partner Portal</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-40 px-12 max-w-[1920px] mx-auto">
+<div class="bg-on-background p-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10">
+<img alt="Corporate Building" class="w-full h-full object-cover grayscale" data-alt="Dramatic architectural perspective of a skyscraper made of glass and steel under a clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfgFLdfRGesawZQayI0xMnWGTEm4b9G91Rp4-7ssJQjgHojNq6886S3VMchlZ-VWYJGkaUVaIc7i7tUWRLGpI5MNFQe5sqssTG4n_qKmZHXHQi_fB8fCHPufrzAtRJao8947wUlo3gRRKNi9ra1nXbIuebAZ4ZdTH8nzeoqQknVdPb-FOyOOmW9g5mg8eU0niUFHnt_VddMlwmo6OtKfbg_p3_B1QpWZWh__MJOdtjGMOZsKDDtokflsXfFwna-td8vS4fSfou0leV"/>
+</div>
+<div class="relative z-10 max-w-3xl">
+<h2 class="font-headline text-6xl font-bold text-white mb-10 tracking-tighter leading-none">Готовы к цифровой <br/> <span class="text-primary-container">трансформации?</span></h2>
+<p class="text-xl text-slate-400 mb-12 font-light">Обсудите вашу задачу с экспертами. Мы подготовим первичный технический аудит и предложим архитектуру решения в течение 3-х рабочих дней.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="steel-gradient text-on-primary px-12 py-5 font-headline text-sm font-bold tracking-[0.2em] uppercase hover:opacity-90 transition-all">
+                            Запросить консультацию
+                        </button>
+<button class="border border-slate-700 text-white px-12 py-5 font-headline text-sm font-bold tracking-[0.2em] uppercase hover:bg-slate-800 transition-all">
+                            Портфолио проектов
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-slate-100 border-t border-slate-200/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1920px] mx-auto">
+<div>
+<div class="text-xl font-bold tracking-tighter text-slate-900 mb-8">Синтегратор</div>
+<p class="text-slate-500 font-['Inter'] text-sm leading-relaxed">Профессиональные решения в области системной интеграции и разработки ПО для бизнеса.</p>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Услуги</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Интеграция 1С</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Внедрение CRM</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">B2B Разработка</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Консалтинг</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Компания</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">О компании</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Кейсы</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Контакты</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Карьера</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 mb-8">Юридическая информация</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Политика конфиденциальности</a></li>
+<li><a class="text-slate-500 hover:text-slate-900 transition-colors font-['Inter'] text-sm" href="#">Условия использования</a></li>
+</ul>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-slate-200/40 text-center">
+<p class="text-slate-500 font-['Inter'] text-xs">© 2024 Синтегратор. Все права защищены.</p>
+</div>
+</footer>
+</body></html>

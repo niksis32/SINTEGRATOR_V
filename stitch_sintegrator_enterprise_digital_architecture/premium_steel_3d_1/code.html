@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-container": "#acb2ba",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#d9e3f3",
+                    "inverse-primary": "#bcc7de",
+                    "background": "#f8f9ff",
+                    "inverse-surface": "#233144",
+                    "secondary": "#555f6c",
+                    "on-secondary-container": "#5b6573",
+                    "tertiary": "#595f66",
+                    "surface-variant": "#d5e3fc",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#0d1c2e",
+                    "primary": "#545f73",
+                    "on-primary-container": "#394457",
+                    "outline-variant": "#c5c6cc",
+                    "tertiary-fixed-dim": "#c1c7cf",
+                    "surface-tint": "#545f73",
+                    "inverse-on-surface": "#eaf1ff",
+                    "primary-fixed": "#d8e3fb",
+                    "surface-container-high": "#dce9ff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-secondary-fixed": "#121c27",
+                    "error-container": "#ffdad6",
+                    "outline": "#75777c",
+                    "on-tertiary-fixed": "#161c22",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "primary-container": "#a6b2c9",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#bdc7d7",
+                    "on-tertiary-container": "#3e454b",
+                    "tertiary-fixed": "#dde3eb",
+                    "surface-container": "#e6eeff",
+                    "on-primary-fixed": "#111c2d",
+                    "surface-dim": "#ccdbf3",
+                    "on-secondary-fixed-variant": "#3e4854",
+                    "on-surface-variant": "#44474b",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#d9e3f3",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "surface": "#f8f9ff",
+                    "on-surface": "#0d1c2e",
+                    "on-tertiary-fixed-variant": "#41474e",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#d5e3fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .steel-gradient {
+            background: linear-gradient(135deg, #545f73 0%, #a6b2c9 100%);
+        }
+        .chrome-text {
+            background: linear-gradient(180deg, #0d1c2e 0%, #545f73 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased overflow-x-hidden">
+<!-- TopNavBar Navigation -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+<nav class="flex justify-between items-center w-full px-12 py-8 max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-slate-900">Синтегратор</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Услуги</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Отрасли</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">Кейсы</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 hover:text-slate-900 transition-all duration-300" href="#">О компании</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 border-b border-slate-900 pb-1" href="#">Контакты</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 font-headline text-xs font-bold uppercase tracking-widest active:scale-[0.98] transition-transform steel-gradient shadow-lg">
+                Discuss Project
+            </button>
+</nav>
+</header>
+<main class="pt-40 pb-24 px-12 max-w-[1920px] mx-auto">
+<!-- Hero Section -->
+<section class="mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-7">
+<h1 class="font-headline text-7xl md:text-9xl font-bold tracking-tight chrome-text mb-8">
+                        Свяжитесь<br/>с нами
+                    </h1>
+<p class="text-xl text-secondary max-w-xl font-light leading-relaxed">
+                        Мы создаем технологическую основу для вашего бизнеса. Давайте обсудим, как наши решения могут масштабировать ваш успех.
+                    </p>
+</div>
+<div class="lg:col-span-5 flex items-end">
+<div class="w-full h-px bg-outline-variant/30 hidden lg:block mb-8"></div>
+</div>
+</div>
+</section>
+<!-- Main Content Asymmetric Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Contact Info & Glass Modules -->
+<div class="lg:col-span-4 space-y-6">
+<div class="glass-card p-10 shadow-sm border border-white/40">
+<div class="flex items-center gap-6 mb-12">
+<div class="w-14 h-14 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-3xl">call</span>
+</div>
+<div>
+<p class="font-headline uppercase text-[10px] tracking-widest text-outline font-bold mb-1">Телефон</p>
+<p class="text-xl font-medium">+7 (495) 000-00-00</p>
+</div>
+</div>
+<div class="flex items-center gap-6 mb-12">
+<div class="w-14 h-14 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-3xl">mail</span>
+</div>
+<div>
+<p class="font-headline uppercase text-[10px] tracking-widest text-outline font-bold mb-1">Электронная почта</p>
+<p class="text-xl font-medium">hello@sintegrator.pro</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<div>
+<p class="font-headline uppercase text-[10px] tracking-widest text-outline font-bold mb-1">Центральный офис</p>
+<p class="text-xl font-medium">Москва, ул. Технологий, 42</p>
+</div>
+</div>
+</div>
+<!-- Office List Bento -->
+<div class="bg-surface-container-low p-10 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold tracking-widest uppercase mb-8">Локации</h3>
+<div class="space-y-8">
+<div class="group cursor-pointer">
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Санкт-Петербург</h4>
+<p class="text-sm text-secondary">Наб. Цифровизации, д. 15, офис 302</p>
+</div>
+<div class="group cursor-pointer">
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Екатеринбург</h4>
+<p class="text-sm text-secondary">БЦ «Инновация», ул. Кода, 88</p>
+</div>
+<div class="group cursor-pointer">
+<h4 class="font-bold text-on-surface mb-1 group-hover:text-primary transition-colors">Астана</h4>
+<p class="text-sm text-secondary">Пр. Будущего, 12, Технопарк</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback Form -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-lowest p-12 lg:p-20 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 steel-gradient opacity-5 -mr-32 -mt-32 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h2 class="font-headline text-4xl font-bold mb-12 tracking-tight">Новый проект?</h2>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+<div class="space-y-2">
+<label class="font-headline uppercase text-[10px] tracking-[0.2em] font-bold text-outline">Ваше имя</label>
+<input class="w-full bg-surface-container-low border-none p-5 focus:ring-1 focus:ring-primary/30 text-on-surface placeholder:text-outline-variant transition-all outline-none" placeholder="Алексей Иванов" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline uppercase text-[10px] tracking-[0.2em] font-bold text-outline">Email адрес</label>
+<input class="w-full bg-surface-container-low border-none p-5 focus:ring-1 focus:ring-primary/30 text-on-surface placeholder:text-outline-variant transition-all outline-none" placeholder="email@company.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline uppercase text-[10px] tracking-[0.2em] font-bold text-outline">Компания</label>
+<input class="w-full bg-surface-container-low border-none p-5 focus:ring-1 focus:ring-primary/30 text-on-surface placeholder:text-outline-variant transition-all outline-none" placeholder="Global Systems" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline uppercase text-[10px] tracking-[0.2em] font-bold text-outline">Отрасль</label>
+<select class="w-full bg-surface-container-low border-none p-5 focus:ring-1 focus:ring-primary/30 text-on-surface transition-all outline-none appearance-none">
+<option>Финтех</option>
+<option>Производство</option>
+<option>Логистика</option>
+<option>Retail</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="font-headline uppercase text-[10px] tracking-[0.2em] font-bold text-outline">Ваше сообщение</label>
+<textarea class="w-full bg-surface-container-low border-none p-5 focus:ring-1 focus:ring-primary/30 text-on-surface placeholder:text-outline-variant transition-all outline-none resize-none" placeholder="Опишите ваши задачи и цели..." rows="5"></textarea>
+</div>
+<div class="md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-8 pt-6">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary" id="terms" type="checkbox"/>
+<label class="text-xs text-secondary font-light" for="terms">Согласен на обработку персональных данных</label>
+</div>
+<button class="w-full md:w-auto steel-gradient text-on-primary px-16 py-5 font-headline text-sm font-bold uppercase tracking-widest shadow-xl hover:shadow-2xl transition-all active:scale-[0.97]" type="submit">
+                                    Отправить запрос
+                                </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- Graphite Style Map Section -->
+<section class="mt-32">
+<div class="relative h-[600px] w-full bg-slate-900 overflow-hidden group">
+<div class="absolute inset-0 bg-slate-950 mix-blend-multiply opacity-60 z-10 pointer-events-none"></div>
+<img alt="Office Map" class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="Monochrome dark satellite map of a modern city center with glowing tech nodes and subtle graphite textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg8khFdiEVpJMPdwfj10xhHxs2ClgPFpxsYB03MXQ7oPyAtv0EL7meByZ1viznbvimcKq3dfxmT-at2JqtKsOkeYuQRvXcKASezRhhniBju7yrSyRFOwCDHFxcIZrp-dFOkIKXuBZ8y0Jalvizwbh_PvGjbHBEInP5ZqoZWj01QMDjtPMoC065NN8BmHOg27b3bVgiX6Uq88DVIOqtBd9VfzdyjRFtmB6WJDyoD4e6pITDVHymDSxWhUXMurzz4PSaa0l6jw6rhjvL"/>
+<!-- Map UI Elements -->
+<div class="absolute top-12 left-12 z-20 space-y-4">
+<div class="bg-slate-900/90 backdrop-blur-md p-6 border-l-4 border-primary">
+<h4 class="font-headline text-white text-sm font-bold uppercase tracking-widest mb-1">Метка на карте</h4>
+<p class="text-slate-400 text-xs">Нажмите для построения маршрута</p>
+</div>
+</div>
+<!-- Floating Pulse Marker -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-24 h-24 bg-primary/20 rounded-full animate-ping"></div>
+<div class="absolute w-12 h-12 bg-primary/40 rounded-full"></div>
+<div class="w-4 h-4 bg-white rounded-full shadow-[0_0_20px_white]"></div>
+</div>
+</div>
+<!-- Map Controls -->
+<div class="absolute bottom-12 right-12 z-20 flex flex-col gap-2">
+<button class="w-12 h-12 bg-slate-900/90 text-white flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-12 h-12 bg-slate-900/90 text-white flex items-center justify-center hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-slate-100 border-t border-slate-200/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1920px] mx-auto">
+<div class="col-span-1">
+<div class="text-xl font-bold tracking-tighter text-slate-900 mb-8">Синтегратор</div>
+<p class="text-slate-500 font-['Inter'] text-sm leading-relaxed">
+                    Премиальные IT-решения для тех, кто строит будущее. Интегрируем инновации в каждый аспект вашего дела.
+                </p>
+</div>
+<div class="col-span-1">
+<h5 class="font-headline text-[10px] tracking-widest uppercase font-bold text-slate-900 mb-6">Компания</h5>
+<ul class="space-y-4 text-sm text-slate-500 font-['Inter']">
+<li><a class="hover:text-slate-900 transition-colors" href="#">О нас</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Команда</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Карьера</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Кейсы</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-headline text-[10px] tracking-widest uppercase font-bold text-slate-900 mb-6">Сервисы</h5>
+<ul class="space-y-4 text-sm text-slate-500 font-['Inter']">
+<li><a class="hover:text-slate-900 transition-colors" href="#">Аналитика</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Разработка ПО</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Кибербезопасность</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">AI Интеграции</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h5 class="font-headline text-[10px] tracking-widest uppercase font-bold text-slate-900 mb-6">Юридическая информация</h5>
+<ul class="space-y-4 text-sm text-slate-500 font-['Inter']">
+<li><a class="hover:text-slate-900 transition-colors" href="#">Политика конфиденциальности</a></li>
+<li><a class="hover:text-slate-900 transition-colors" href="#">Условия использования</a></li>
+<li class="pt-4 text-slate-900 font-semibold">© 2024 Синтегратор. Все права защищены.</li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

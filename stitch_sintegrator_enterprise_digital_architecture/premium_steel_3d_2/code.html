@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>О компании | Синтегратор</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#eff4ff",
+                "tertiary-container": "#acb2ba",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed": "#d9e3f3",
+                "inverse-primary": "#bcc7de",
+                "background": "#f8f9ff",
+                "inverse-surface": "#233144",
+                "secondary": "#555f6c",
+                "on-secondary-container": "#5b6573",
+                "tertiary": "#595f66",
+                "surface-variant": "#d5e3fc",
+                "on-secondary": "#ffffff",
+                "on-background": "#0d1c2e",
+                "primary": "#545f73",
+                "on-primary-container": "#394457",
+                "outline-variant": "#c5c6cc",
+                "tertiary-fixed-dim": "#c1c7cf",
+                "surface-tint": "#545f73",
+                "inverse-on-surface": "#eaf1ff",
+                "primary-fixed": "#d8e3fb",
+                "surface-container-high": "#dce9ff",
+                "primary-fixed-dim": "#bcc7de",
+                "on-secondary-fixed": "#121c27",
+                "error-container": "#ffdad6",
+                "outline": "#75777c",
+                "on-tertiary-fixed": "#161c22",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "primary-container": "#a6b2c9",
+                "on-primary": "#ffffff",
+                "secondary-fixed-dim": "#bdc7d7",
+                "on-tertiary-container": "#3e454b",
+                "tertiary-fixed": "#dde3eb",
+                "surface-container": "#e6eeff",
+                "on-primary-fixed": "#111c2d",
+                "surface-dim": "#ccdbf3",
+                "on-secondary-fixed-variant": "#3e4854",
+                "on-surface-variant": "#44474b",
+                "on-tertiary": "#ffffff",
+                "secondary-container": "#d9e3f3",
+                "surface-bright": "#f8f9ff",
+                "on-primary-fixed-variant": "#3c475a",
+                "surface": "#f8f9ff",
+                "on-surface": "#0d1c2e",
+                "on-tertiary-fixed-variant": "#41474e",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#d5e3fc"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .metal-gradient {
+            background: linear-gradient(135deg, #545f73 0%, #a6b2c9 100%);
+        }
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .text-engraved {
+            text-shadow: 0.5px 0.5px 0px rgba(255,255,255,0.5), -0.5px -0.5px 0px rgba(0,0,0,0.1);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+<div class="flex justify-between items-center w-full px-12 py-8 max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white">Синтегратор</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300" href="#">Услуги</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300" href="#">Отрасли</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300" href="#">Кейсы</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 dark:text-white border-b border-slate-900 dark:border-white pb-1" href="#">О компании</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-300" href="#">Контакты</a>
+</div>
+<button class="metal-gradient text-on-primary px-8 py-3 font-label text-xs uppercase tracking-widest font-bold active:scale-[0.98] transition-transform shadow-lg border-t border-white/30">
+                Discuss Project
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="high-tech architectural structure with polished steel surfaces and dramatic geometric shadows in cold blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHyk9BxjlJApO2UvKVIw56v6z9hO_7xNvwp9FLdpyR3PaXCU8I8rjCVHBDG8KTGcEFb2XBA-5l_uVDpATc84Gl2hSAz8Dc_7uHejG28FORjJuE219X4V-zIOFrP9etA3yZnP0SDOFhErjxYtaBq38JUjzqGHN9IXi8mPNPZQBMJPj6YlnGw9X14j9yWbS2u4faOmd-GSMvkaCpeLUP6dyLmaYoBaQ-XOvvMx6Bdv7ChEaOl6u0tp6qCtaJZ8Q9CMNFwf-OoyCcz9Hp"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 px-12 max-w-[1920px] mx-auto w-full">
+<div class="max-w-4xl">
+<p class="font-label text-primary uppercase tracking-[0.3em] mb-6 text-sm font-semibold">Фундаментальность и Инновации</p>
+<h1 class="font-headline text-7xl md:text-9xl font-bold text-on-background tracking-tighter leading-none mb-8">
+                    Архитектура <br/>будущего
+                </h1>
+<p class="text-xl text-secondary max-w-xl font-light leading-relaxed mb-12">
+                    Создаем технологический фундамент для глобальных лидеров. Мы превращаем инженерную точность в цифровую реальность.
+                </p>
+<div class="flex space-x-8">
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-bold text-on-background">15+</span>
+<span class="font-label text-xs uppercase tracking-widest text-primary">Лет опыта</span>
+</div>
+<div class="w-px h-12 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-bold text-on-background">400+</span>
+<span class="font-label text-xs uppercase tracking-widest text-primary">Проектов</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- History Timeline Section -->
+<section class="py-32 bg-surface-container-low relative overflow-hidden">
+<div class="px-12 max-w-[1920px] mx-auto">
+<div class="mb-24">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-background mb-4">История становления</h2>
+<div class="h-1 w-24 metal-gradient"></div>
+</div>
+<div class="relative">
+<!-- Metallic Line -->
+<div class="absolute top-1/2 left-0 w-full h-px bg-outline-variant/50 hidden md:block"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+<!-- Year 1 -->
+<div class="group">
+<div class="mb-8 font-headline text-3xl font-bold text-primary-fixed-dim transition-colors group-hover:text-primary">2009</div>
+<div class="w-4 h-4 rounded-full metal-gradient border-4 border-surface-container-low absolute top-1/2 -translate-y-2 hidden md:block"></div>
+<div class="pt-8 border-l md:border-l-0 md:pt-12 border-outline-variant/30 pl-6 md:pl-0">
+<h3 class="font-bold text-lg mb-2 text-on-background">Основание</h3>
+<p class="text-sm text-secondary font-light">Запуск первого инженерного бюро в области системной интеграции.</p>
+</div>
+</div>
+<!-- Year 2 -->
+<div class="group md:mt-16">
+<div class="mb-8 font-headline text-3xl font-bold text-primary-fixed-dim transition-colors group-hover:text-primary">2014</div>
+<div class="w-4 h-4 rounded-full metal-gradient border-4 border-surface-container-low absolute top-1/2 -translate-y-2 hidden md:block"></div>
+<div class="pt-8 border-l md:border-l-0 md:pt-12 border-outline-variant/30 pl-6 md:pl-0">
+<h3 class="font-bold text-lg mb-2 text-on-background">Масштабирование</h3>
+<p class="text-sm text-secondary font-light">Выход на международный рынок и сертификация по стандартам ISO.</p>
+</div>
+</div>
+<!-- Year 3 -->
+<div class="group">
+<div class="mb-8 font-headline text-3xl font-bold text-primary-fixed-dim transition-colors group-hover:text-primary">2019</div>
+<div class="w-4 h-4 rounded-full metal-gradient border-4 border-surface-container-low absolute top-1/2 -translate-y-2 hidden md:block"></div>
+<div class="pt-8 border-l md:border-l-0 md:pt-12 border-outline-variant/30 pl-6 md:pl-0">
+<h3 class="font-bold text-lg mb-2 text-on-background">R&amp;D Центр</h3>
+<p class="text-sm text-secondary font-light">Открытие собственной лаборатории для разработки инновационных ИТ-решений.</p>
+</div>
+</div>
+<!-- Year 4 -->
+<div class="group md:mt-16">
+<div class="mb-8 font-headline text-3xl font-bold text-primary-fixed-dim transition-colors group-hover:text-primary">2024</div>
+<div class="w-4 h-4 rounded-full metal-gradient border-4 border-surface-container-low absolute top-1/2 -translate-y-2 hidden md:block"></div>
+<div class="pt-8 border-l md:border-l-0 md:pt-12 border-outline-variant/30 pl-6 md:pl-0">
+<h3 class="font-bold text-lg mb-2 text-on-background">Экосистема</h3>
+<p class="text-sm text-secondary font-light">Формирование полноценной технологической экосистемы Синтегратор.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Values Section (Bento Grid) -->
+<section class="py-32 bg-background">
+<div class="px-12 max-w-[1920px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-4 flex flex-col justify-center">
+<h2 class="font-headline text-5xl font-bold text-on-background mb-8 leading-tight">Ценности, отлитые в стали</h2>
+<p class="text-secondary font-light text-lg">Наши принципы — это не просто слова, а жесткие инженерные стандарты, которым мы следуем в каждом узле системы.</p>
+</div>
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Value 1 -->
+<div class="bg-surface-container-lowest p-10 border-t border-primary/20 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-headline text-2xl font-bold text-on-background mb-4 uppercase tracking-wider">Надежность</h3>
+<p class="text-secondary font-light leading-relaxed">Системы с отказоустойчивостью 99.99%. Мы проектируем решения, которые выдерживают любые нагрузки.</p>
+</div>
+<!-- Value 2 -->
+<div class="bg-surface-container-highest p-10 shadow-sm border-t border-primary/20">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<h3 class="font-headline text-2xl font-bold text-on-background mb-4 uppercase tracking-wider">Точность</h3>
+<p class="text-secondary font-light leading-relaxed">Выверенность каждого алгоритма. Мы исключаем человеческий фактор через глубокую автоматизацию.</p>
+</div>
+<!-- Value 3 -->
+<div class="bg-surface-container-highest p-10 shadow-sm border-t border-primary/20">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" style="font-variation-settings: 'FILL' 1;">hub</span>
+<h3 class="font-headline text-2xl font-bold text-on-background mb-4 uppercase tracking-wider">Системность</h3>
+<p class="text-secondary font-light leading-relaxed">Комплексный взгляд на архитектуру предприятия. Единство всех компонентов в общей структуре.</p>
+</div>
+<!-- Value 4 -->
+<div class="metal-gradient p-10 text-on-primary shadow-lg">
+<span class="material-symbols-outlined text-4xl mb-6" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h3 class="font-headline text-2xl font-bold mb-4 uppercase tracking-wider">Скорость</h3>
+<p class="font-light opacity-90 leading-relaxed">Мгновенная реакция на изменения рынка и оперативное внедрение сложнейших технологических стеков.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-32 bg-surface-container-low">
+<div class="px-12 max-w-[1920px] mx-auto">
+<div class="text-center mb-24">
+<p class="font-label text-primary uppercase tracking-[0.2em] text-xs font-bold mb-4">Интеллектуальный капитал</p>
+<h2 class="font-headline text-6xl font-bold text-on-background tracking-tighter">Наши Архитекторы</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Member 1 -->
+<div class="group">
+<div class="relative overflow-hidden mb-6 aspect-[4/5] bg-surface-dim">
+<img class="w-full h-full object-cover grayscale brightness-90 transition-transform duration-700 group-hover:scale-110" data-alt="professional portrait of a male lead engineer in a sharp grey suit, cold studio lighting, minimalist tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCibQnUczyV5ZqGZ2tpLQmAuHR9EcC0nTuQz6-dPjCSlsKuszx6-1YDI6IE2ayy5Ef8_pS2TfR5j-Ifm1c8fZlt1T5N1Jk-tEIJCJd2P1sk1mL_QSNI4XWGP1ZfMGhaOmlPXTx1tGeq1vRJ0sLErOTA42x2tjuiU89WQPEiT4C40-MuBiCBfTVVT2TZ1HOd4YEE7TLT7ifwxSXkFPpblX3jaTxlP1DV_HUXDwkyZXbU9mWMgE4bQMJakAaiVi2hPOu-Xq5-iD0qqKfo"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="px-2">
+<h4 class="font-headline text-2xl font-bold text-on-background mb-1">Александр Волков</h4>
+<p class="font-label text-xs uppercase tracking-widest text-primary font-semibold">Главный инженер проектов</p>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="group">
+<div class="relative overflow-hidden mb-6 aspect-[4/5] bg-surface-dim">
+<img class="w-full h-full object-cover grayscale brightness-90 transition-transform duration-700 group-hover:scale-110" data-alt="professional portrait of a female system architect, cold lighting, high-tech office environment, monochrome aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dhnF_SsqBjV3Qjzb61_BsIRBs03Bj3v9wQ7ValmCEnJjphqShoT7wOY7m4GOrjluWu3_ARcHgRYr0WLsR2xn8gpiyQ7EdJfRLrXJs9mKG20D63ZXPHm-VvBZAjMKkKtpBFyMQzYSVFGD1NFni3j6OZTb7m1lXFfiZFTHG8V6VOSFGprim6OwUq19K46qeziAwsYvKFlUgaKVNgnrNJc_LOBHm1Z7_kw_IJPZgRDyxs9KdqcHGEJZrGYQ1_Ch-W8M7lBlu3PQ6k5M"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="px-2">
+<h4 class="font-headline text-2xl font-bold text-on-background mb-1">Елена Соколова</h4>
+<p class="font-label text-xs uppercase tracking-widest text-primary font-semibold">Ведущий ИТ-архитектор</p>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="group">
+<div class="relative overflow-hidden mb-6 aspect-[4/5] bg-surface-dim">
+<img class="w-full h-full object-cover grayscale brightness-90 transition-transform duration-700 group-hover:scale-110" data-alt="professional portrait of a male tech director, confident look, minimalist industrial background, sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOjWSrFZ8p0XUfXjSOleC9GmuVKnMaIRyT8mvU1dx6ljxme4I4NZX6nVtJUc5FiDl8d1HTzaGIoejlDgnj4Xoj6CgoV0dSY9KPYSDtosiTyVrML3E45fkJqBfuNijRvUU0jfB076fLMT_hwsTZNjcvAfW14Vw6s3vg4zjJtI77nMN0RLNJRwbISalKqOlN5r6_aWn61HVmJ0A1tRQOZBAfBFum5Z0hFEWfMymH2WyryG-ddzWOWeKVSHKn0Nvb-L4nDc8isomnG_th"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="px-2">
+<h4 class="font-headline text-2xl font-bold text-on-background mb-1">Дмитрий Морозов</h4>
+<p class="font-label text-xs uppercase tracking-widest text-primary font-semibold">Технический директор</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Licenses & Certificates -->
+<section class="py-32 bg-background">
+<div class="px-12 max-w-[1920px] mx-auto asymmetric-grid gap-20 items-center">
+<div>
+<h2 class="font-headline text-5xl font-bold text-on-background mb-8 leading-tight">Лицензии и стандарты</h2>
+<p class="text-secondary font-light text-lg mb-12">Мы обладаем всеми необходимыми государственными и международными допусками для реализации проектов любой категории сложности, включая критическую инфраструктуру.</p>
+<div class="space-y-6">
+<div class="flex items-center space-x-6 p-6 border-l-2 border-primary bg-surface-container-low transition-all hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-3xl text-primary">verified</span>
+<div>
+<h4 class="font-bold text-on-background">ISO 9001:2015</h4>
+<p class="text-sm text-secondary">Международный стандарт менеджмента качества</p>
+</div>
+</div>
+<div class="flex items-center space-x-6 p-6 border-l-2 border-primary bg-surface-container-low transition-all hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-3xl text-primary">gpp_good</span>
+<div>
+<h4 class="font-bold text-on-background">Лицензия ФСТЭК</h4>
+<p class="text-sm text-secondary">На деятельность по технической защите информации</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-variant p-2 group overflow-hidden">
+<img class="w-full h-auto grayscale opacity-80 group-hover:opacity-100 transition-all" data-alt="minimalist architectural certification document with elegant typography and metallic seal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3jEeNlhz0N1Z8K85kLiWitWa4EdXd8exQqieW77bpnZidharFs9eBAxFV3rGr4m_Job4cOMc5ZI5GLsHKZaXCifa0CrJDEnkKCo1GOSxgbdzJ7hKobCU_It9kMFbpdg_ubQdLEQFz1SAPkCDAaLtFtqSsHn_XA_nXw-lRynu26-X-xX6Kwp0xHCP4BrXgeYBoFhRKX6FbxjNCqQxUqYRzqY7d_O1y_2Q3w6Xb7UJ1xCgCcb155Eh22MZgk3ZDmhqBYbGERXtsU9xk"/>
+</div>
+<div class="bg-surface-variant p-2 group overflow-hidden translate-y-8">
+<img class="w-full h-auto grayscale opacity-80 group-hover:opacity-100 transition-all" data-alt="professional engineering license document with clean layout and official stamps" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA4WD_kE8f3N6MoZufl_dwfarfwlv741MzzpS7Vf2wedaSe_yna2p9MxtvP2b5VGnxduTw_saUjgmDR4chx1ODAbVRGs3z-H500FcFnfKMig-zKVSP7D6u9D2v3FNN7Rm1vwukMbqSkoTDOhyD0hh0OrvMXhuIvKTIM3X3Otlx2xxd9YOrfdWEF_IVpQ8xI4U3mSAt8kgGaZWE0Bxub8M5WcI0fGPkNsUAqi2EL-MqyzBLheGd--dHUBBK_eurK22O1N0U6Fq4T-FC"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-slate-100 dark:bg-slate-900 border-t border-slate-200/20 dark:border-slate-800/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-[1920px] mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white mb-6">Синтегратор</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                    Проектируем и строим цифровую инфраструктуру, которая определяет будущее отраслей.
+                </p>
+</div>
+<div>
+<h4 class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white mb-6">Навигация</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm" href="#">Услуги</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm" href="#">Отрасли</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm text-slate-900 dark:text-white font-semibold" href="#">О компании</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm" href="#">Кейсы</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white mb-6">Контакты</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-2">Москва, Пресненская наб., 12</p>
+<p class="text-slate-900 dark:text-white font-bold text-sm mb-4">+7 (495) 123-45-67</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">info@sintegrator.pro</p>
+</div>
+<div>
+<h4 class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white mb-6">Юридическая информация</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm" href="#">Политика конфиденциальности</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm" href="#">Условия использования</a></li>
+</ul>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-slate-200/20 dark:border-slate-800/20 max-w-[1920px] mx-auto flex justify-between items-center">
+<p class="text-slate-600 dark:text-slate-400 text-xs font-['Inter'] tracking-normal">
+                © 2024 Синтегратор. Все права защищены.
+            </p>
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">hub</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">database</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-slate-900 cursor-pointer transition-colors">terminal</span>
+</div>
+</div>
+</footer>
+</body></html>

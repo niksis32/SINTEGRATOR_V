@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Синтегратор | Архитектурная точность интеграций</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d5e3fc",
+                        "secondary": "#555f6c",
+                        "primary-container": "#a6b2c9",
+                        "surface": "#f8f9ff",
+                        "primary-fixed-dim": "#bcc7de",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container": "#e6eeff",
+                        "on-primary-container": "#394457",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "on-tertiary-container": "#3e454b",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-fixed": "#d8e3fb",
+                        "on-surface": "#0d1c2e",
+                        "on-secondary-fixed-variant": "#3e4854",
+                        "on-secondary-fixed": "#121c27",
+                        "primary": "#545f73",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#233144",
+                        "outline-variant": "#c5c6cc",
+                        "on-secondary-container": "#5b6573",
+                        "surface-container-low": "#eff4ff",
+                        "on-background": "#0d1c2e",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#acb2ba",
+                        "on-surface-variant": "#44474b",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#595f66",
+                        "outline": "#75777c",
+                        "surface-dim": "#ccdbf3",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "inverse-primary": "#bcc7de",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d5e3fc",
+                        "tertiary-fixed": "#dde3eb",
+                        "secondary-fixed": "#d9e3f3",
+                        "secondary-fixed-dim": "#bdc7d7",
+                        "surface-tint": "#545f73",
+                        "on-tertiary-fixed": "#161c22",
+                        "secondary-container": "#d9e3f3",
+                        "on-primary-fixed": "#111c2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .metallic-gradient {
+            background: linear-gradient(135deg, #545f73 0%, #a6b2c9 100%);
+        }
+        .glass-hud {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .architectural-grid {
+            background-image: radial-gradient(circle at 1px 1px, #c5c6cc 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        
+        /* 3D Icon Specific Styles */
+        .icon-3d-wrapper {
+            perspective: 1000px;
+        }
+        .icon-3d-box {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .group:hover .icon-3d-box {
+            transform: translateY(-12px) rotateX(10deg) rotateY(10deg);
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .icon-3d-box .material-symbols-outlined {
+            transition: all 0.5s ease;
+            color: #545f73;
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
+        }
+        .group:hover .icon-3d-box .material-symbols-outlined {
+            color: white;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)) brightness(1.2);
+            font-variation-settings: 'FILL' 1, 'wght' 400;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl docked w-full top-0 sticky z-50 shadow-[0_1px_0_0_rgba(197,198,204,0.1)] shadow-2xl shadow-slate-950/5">
+<nav class="flex justify-between items-center px-8 py-5 max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-[0.15em] text-slate-900 dark:text-slate-100">SINTEGRATOR</div>
+<div class="hidden md:flex gap-12 items-center">
+<a class="font-['Space_Grotesk'] tracking-[0.05em] uppercase text-sm font-medium text-slate-900 dark:text-white border-b border-slate-900 dark:border-white pb-1 active:scale-[0.98] transition-transform duration-200" href="#">Solutions</a>
+<a class="font-['Space_Grotesk'] tracking-[0.05em] uppercase text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 active:scale-[0.98]" href="#">Projects</a>
+<a class="font-['Space_Grotesk'] tracking-[0.05em] uppercase text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 active:scale-[0.98]" href="#">Technologies</a>
+<a class="font-['Space_Grotesk'] tracking-[0.05em] uppercase text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 active:scale-[0.98]" href="#">About</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300 cursor-pointer">language</span>
+<button class="metallic-gradient text-on-primary px-6 py-2.5 font-headline font-bold uppercase tracking-widest text-xs border-t border-white/30 active:scale-[0.98] transition-all">Contact Us</button>
+</div>
+</nav>
+</header>
+<main class="architectural-grid">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center px-8 md:px-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-transparent to-transparent z-10"></div>
+<img alt="3D abstract metallic structure" class="w-full h-full object-cover opacity-60" data-alt="abstract 3D rendered complex metallic structure with brushed aluminum texture, interconnected beams and nodes, sharp industrial lighting, high-end enterprise aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTO82tqUnJzswrlMJ22IYHMxs6lulRkKZ4iQgQgaoIYYalLEK4OTskyECOzcgbYg2vXvr6tqFEeYK9Wlkm4wCCCDqyrVoooT9G3NMSXH7W9ZMk3H7g9VACSXUkCxB4CUYWsQmwfmcKUz1v9aoo390Chicr6yNmR1MgnUFdMqkruhrPuwQGoHcTNve5y-JoYf8J4wf_4F7BhDSAjJa-MaRcC2lmp6rj9J2dzwUGWn2q_BxN11R1te9S3sNRQZSxZA5GYU4t1nVo0c25"/>
+</div>
+<div class="relative z-20 max-w-4xl">
+<div class="inline-block px-4 py-1 bg-surface-container-highest border-l-4 border-primary mb-8">
+<span class="font-headline text-sm tracking-[0.2em] uppercase text-primary font-bold">Industrial Synthesis</span>
+</div>
+<h1 class="font-headline text-7xl md:text-9xl font-black text-on-surface tracking-[-0.03em] leading-tight mb-8">СИНТЕГРАТОР</h1>
+<p class="text-xl md:text-2xl text-secondary max-w-2xl font-light leading-relaxed mb-12">
+                Создание монолитных ИТ-экосистем для промышленных гигантов. Мы преобразуем фрагментированные данные в архитектурное превосходство.
+            </p>
+<div class="flex flex-wrap gap-6">
+<button class="metallic-gradient text-on-primary px-10 py-5 font-headline font-bold uppercase tracking-[0.1em] text-sm shadow-xl hover:shadow-primary/20 transition-all active:scale-95">Обсудить проект</button>
+<button class="bg-surface-container-highest text-on-surface px-10 py-5 font-headline font-bold uppercase tracking-[0.1em] text-sm hover:bg-surface-container-high transition-all active:scale-95">Архитектура решения</button>
+</div>
+</div>
+</section>
+<!-- Expertise (Industries) -->
+<section class="py-32 px-8 md:px-20 max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row gap-20 items-end mb-24">
+<div class="w-full md:w-1/2">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-6 uppercase">Сферы влияния</h2>
+<p class="text-lg text-secondary">Масштабируемые решения для критически важных отраслей экономики, где надежность является единственным стандартом.</p>
+</div>
+<div class="w-full md:w-1/2 h-px bg-outline-variant/30 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<div class="group relative aspect-[4/5] bg-surface-container-low overflow-hidden cursor-pointer">
+<img alt="Manufacturing" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="industrial robot arm in a modern manufacturing facility, cinematic lighting, brushed metal surfaces, high precision assembly line" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1GhMkPIfYco3VQCLrU2qJK-Q19KqxG9LviJgMIr6rSWUv18E-49bnrqKUc1LBfxHBQTMvWNbJ-dJXFTqraAFfWJFDhETdgZptYaxJdvNJyOuiOFcxkf4xBBPk_1NgancqChF6pCIfdtDFkArHfhGa5UrMaxUvtpfsjENj9bQWlgZP9yp6-XzpBDXclLImwXa_O196TRJOSXjdqcV3d0z6ds3i3Q5Bl94-fJkbwYL93u-FsPLOmhTAG8DW9ylkWeq1kFkgYEoC007Z"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-10 left-10 right-10">
+<span class="font-headline text-on-primary text-xs tracking-[0.3em] uppercase mb-2 block opacity-60">Industry 4.0</span>
+<h3 class="text-3xl font-bold text-on-primary font-headline uppercase tracking-wider">Manufacturing</h3>
+</div>
+</div>
+<div class="group relative aspect-[4/5] bg-surface-container-low overflow-hidden cursor-pointer">
+<img alt="Logistics" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" data-alt="high-tech logistics warehouse with automated sorting systems, metallic shelving, blue light highlights, industrial precision" src="https://lh3.googleusercontent.com/aida/ADBb0ugIRETEva0jM1causNvKnRbBArSMhPLmVOaGi5cEJCFvS91-nKoYPvk72XRSbVSSt4nLWbvCxufj9uSqCdqS_bgQRXhFi4G0vHoQEIl6vrHKNN7CtqqLHdqrarlgaSjSS9y4JehufQCnCtwfMR3Z1fWLIejLiT_1JpzpbP7RcwbQNny4PVYKtMPKoQicQ0Y285WYeLz55V1iqmilMGrcJcLHHNFFBzE32J0Y10wc7Gsn7DDNAd9iJZkAoo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-10 left-10 right-10">
+<span class="font-headline text-on-primary text-xs tracking-[0.3em] uppercase mb-2 block opacity-60">Supply Chain</span>
+<h3 class="text-3xl font-bold text-on-primary font-headline uppercase tracking-wider">Logistics</h3>
+</div>
+</div>
+<div class="group relative aspect-[4/5] bg-surface-container-low overflow-hidden cursor-pointer">
+<img alt="B2B Enterprise Dashboard" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="High-end premium 3D visualization of a futuristic B2B enterprise dashboard and data ecosystem. Polished steel, graphite, and deep blue surfaces. Abstract geometric structures representing interconnected business processes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXNNYTzomdq8mSrEHqqlrVMYqkDhMSV8zL1FMxVIgc3A7iqSQKW5iV3f88y2_1rn6HokRjDDvYRdB0X6GwV2R5cTvNml5QH3a41z0PMTPg34pbXvMp8OHoEJBwTjNGqLiqUK9c6sIcOW4B_B7TfJ5-K3f77EuKdkMuhONepBksWR-f8CbEovHqpZvSpZB3lMsArGfaRYOZBEZxZhViBeQoC4UENiOl9_NOH3v-lsT6ceQohMjQVm_c5Jc_lO1Hf08T0_obTKzAxVnU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-10 left-10 right-10">
+<span class="font-headline text-on-primary text-xs tracking-[0.3em] uppercase mb-2 block opacity-60">Enterprise</span>
+<h3 class="text-3xl font-bold text-on-primary font-headline uppercase tracking-wider">B2B Systems</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Business Challenges: Architectural Focus -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-[1440px] mx-auto px-8 md:px-20 grid md:grid-cols-2 gap-24 items-center">
+<div class="order-2 md:order-1">
+<div class="relative bg-surface p-12 shadow-2xl border-t border-white">
+<div class="absolute -top-12 -left-12 w-32 h-32 bg-primary-fixed-dim/20 -z-10"></div>
+<img alt="High-end premium 3D visualization of a futuristic industrial digital ecosystem" class="w-full aspect-square object-cover mb-8 filter contrast-125" data-alt="abstract architectural blueprint of a digital system, glowing lines on dark blue background, technical schematic, sophisticated technology" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmFWRm6AlG6ebCnjsivFHxTUX20aUCbLv5W6lWtsYxu3a7269mkkf4wgXIuTck8b8lVaQcICt3w3Q7ABXdCJ4yOBibneZ6I8OKZGpnY-sLl0tN9YwRPY-B5AIRDbBOTjlhfRbD2-BNm8Xys4R7px_BZeU5eTwnM9EKz95h5PJBYNzffY6aApLx1f1IBT1FRKKVn8ipfhjzGp_WODp8R69F82RBuwBqE2SS5tcwv-Acnqm6YfL-UDQhzOhLFZ4Z2wOtS7o2-Mxf0HqM"/>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-highest">
+<span class="text-xs font-headline font-bold uppercase tracking-widest text-primary mb-2 block">Fragmentation</span>
+<p class="text-sm font-medium text-on-surface">Data Silos eliminated through unified protocol.</p>
+</div>
+<div class="p-4 bg-surface-container-highest">
+<span class="text-xs font-headline font-bold uppercase tracking-widest text-primary mb-2 block">Human Factor</span>
+<p class="text-sm font-medium text-on-surface">98% error reduction via machine oversight.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-10 leading-tight">Борьба с хаосом: Инженерный подход</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="text-4xl font-headline font-black text-primary-fixed-dim opacity-50">01</span>
+<div>
+<h4 class="text-xl font-bold mb-3 uppercase tracking-wider">Фрагментация ресурсов</h4>
+<p class="text-secondary leading-relaxed">Разрозненные ИТ-решения создают слепые зоны. Мы объединяем их в единую консолидированную структуру управления.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-4xl font-headline font-black text-primary-fixed-dim opacity-50">02</span>
+<div>
+<h4 class="text-xl font-bold mb-3 uppercase tracking-wider">Человеческий фактор</h4>
+<p class="text-secondary leading-relaxed">Автоматизация процессов исключает критические ошибки на уровне архитектуры данных, гарантируя точность 24/7.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services -->
+<section class="py-32 px-8 md:px-20 max-w-[1440px] mx-auto">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-20 text-center uppercase">Сервисные модули</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- CRM Card -->
+<div class="group relative bg-surface p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border-t-2 border-transparent hover:border-primary">
+<div class="w-full aspect-square mb-8 overflow-hidden bg-surface-container-high rounded-sm border border-outline-variant/20">
+<img alt="CRM Digital Hub" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida/ADBb0uhTfl3v0NhFfIATvUAsLquX8HV-Y3ud0Tlwbt6PmdpU8SSEUahfVcfjI8Iy8iNlsD9nMiZnScJlZLWXyK-efO7rluMp2d_IMXjUJoUIapG9Fb9sYTtcQfT0_4QE-NIU7wZGLawRIq-iyUpHkeF4F6GzvV1AqxKAsnrCGfENADjHdM7VHm_1OlZXfhLQ50_ROfyVTQ1U1KpUExhSqx9VUy7nbykZa7bzckM4zKJGXNtNJl5e_oRnTEPTu8awQG1KN4LAU4BXsGWMI0Q"/>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 uppercase tracking-widest">CRM</h3>
+<p class="text-secondary text-sm leading-relaxed mb-8">Интеллектуальное управление взаимоотношениями с клиентами в B2B секторе.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- ERP Card -->
+<div class="group relative bg-surface p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border-t-2 border-transparent hover:border-primary">
+<div class="w-full aspect-square mb-8 overflow-hidden bg-surface-container-high rounded-sm border border-outline-variant/20">
+<img alt="ERP Resource Planning" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTO82tqUnJzswrlMJ22IYHMxs6lulRkKZ4iQgQgaoIYYalLEK4OTskyECOzcgbYg2vXvr6tqFEeYK9Wlkm4wCCCDqyrVoooT9G3NMSXH7W9ZMk3H7g9VACSXUkCxB4CUYWsQmwfmcKUz1v9aoo390Chicr6yNmR1MgnUFdMqkruhrPuwQGoHcTNve5y-JoYf8J4wf_4F7BhDSAjJa-MaRcC2lmp6rj9J2dzwUGWn2q_BxN11R1te9S3sNRQZSxZA5GYU4t1nVo0c25"/>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 uppercase tracking-widest">ERP</h3>
+<p class="text-secondary text-sm leading-relaxed mb-8">Планирование ресурсов предприятия с точностью до миллисекунд.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Doc Management -->
+<div class="group relative bg-surface p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border-t-2 border-transparent hover:border-primary">
+<div class="w-full aspect-square mb-8 overflow-hidden bg-surface-container-high rounded-sm border border-outline-variant/20">
+<img alt="Doc Flow Digital System" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmFWRm6AlG6ebCnjsivFHxTUX20aUCbLv5W6lWtsYxu3a7269mkkf4wgXIuTck8b8lVaQcICt3w3Q7ABXdCJ4yOBibneZ6I8OKZGpnY-sLl0tN9YwRPY-B5AIRDbBOTjlhfRbD2-BNm8Xys4R7px_BZeU5eTwnM9EKz95h5PJBYNzffY6aApLx1f1IBT1FRKKVn8ipfhjzGp_WODp8R69F82RBuwBqE2SS5tcwv-Acnqm6YfL-UDQhzOhLFZ4Z2wOtS7o2-Mxf0HqM"/>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 uppercase tracking-widest">Doc Flow</h3>
+<p class="text-secondary text-sm leading-relaxed mb-8">Безбумажное производство и юридически значимый документооборот.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- API Integration -->
+<div class="group relative bg-surface p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border-t-2 border-transparent hover:border-primary">
+<div class="w-full aspect-square mb-8 overflow-hidden bg-surface-container-high rounded-sm border border-outline-variant/20">
+<img alt="Unified API Integration" class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXNNYTzomdq8mSrEHqqlrVMYqkDhMSV8zL1FMxVIgc3A7iqSQKW5iV3f88y2_1rn6HokRjDDvYRdB0X6GwV2R5cTvNml5QH3a41z0PMTPg34pbXvMp8OHoEJBwTjNGqLiqUK9c6sIcOW4B_B7TfJ5-K3f77EuKdkMuhONepBksWR-f8CbEovHqpZvSpZB3lMsArGfaRYOZBEZxZhViBeQoC4UENiOl9_NOH3v-lsT6ceQohMjQVm_c5Jc_lO1Hf08T0_obTKzAxVnU"/>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-4 uppercase tracking-widest">Unified API</h3>
+<p class="text-secondary text-sm leading-relaxed mb-8">Бесшовная интеграция внешних сервисов в корпоративное ядро.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+</section>
+<!-- Key Offer: Visual Anchor -->
+<section class="py-40 bg-on-surface text-surface overflow-hidden relative">
+<div class="absolute inset-0 opacity-10">
+<img alt="3D metal object" class="w-full h-full object-cover" data-alt="monolithic brushed steel sculpture with sharp geometric edges, professional studio lighting, dark background, industrial luxury" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCUzcUknO1b6QcJq9QGjArIm61Fx2QmR0s3Y9f7m4Cq7pxkKtHRl0vDAWu1JQAzmFUZLjLBMCPJuvJdg8EBVzsw1DLX0Eb67BA3kgDu-L2MGipG7ikqqjhY8FcCpaARcFHHLJvTC-D-cz0mgAiChJ1C5WH7BgIjfpLHZsmzH_A6pEjFX8W1sCyluoBPxQs3ZdT6kpWzXWV-E7nI9qkOL2JvqPaz3Pxln7dy9EzD_6LGDvUYjo25KqnMtT66rf9YdA-6Vl81HiD7Aan"/>
+</div>
+<div class="max-w-[1440px] mx-auto px-8 md:px-20 relative z-10 flex flex-col md:flex-row items-center justify-between gap-20">
+<div class="max-w-2xl">
+<h2 class="font-headline text-6xl font-black mb-10 leading-tight uppercase tracking-tight">Строим на века. <br/><span class="text-primary-fixed-dim">Без компромиссов.</span></h2>
+<p class="text-xl text-primary-container font-light leading-relaxed mb-12">Наши системы не просто решают текущие задачи — они создают фундамент, который не потребует замены через десятилетие. Это инженерная клятва качества.</p>
+<button class="bg-surface text-on-surface px-12 py-6 font-headline font-black uppercase tracking-widest text-sm hover:bg-primary-container transition-all">Приступить к проектированию</button>
+</div>
+<div class="hidden lg:block w-96 h-96 border-[20px] border-primary-fixed-dim/20 rounded-sm relative">
+<div class="absolute -inset-10 border-2 border-primary-container/30"></div>
+<div class="absolute inset-10 bg-primary-fixed-dim/10 backdrop-blur-3xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[120px] text-primary-fixed-dim" data-icon="verified_user" style='font-variation-settings: "FILL" 1;'>verified_user</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio -->
+<section class="py-32 px-8 md:px-20 max-w-[1440px] mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-4 uppercase">Реализованные системы</h2>
+<p class="text-secondary max-w-2xl">Портфолио проектов национального масштаба и технологических прорывов.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="group cursor-pointer">
+<div class="aspect-[16/10] bg-surface-container-high overflow-hidden mb-8 relative shadow-xl">
+<img alt="Case 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="3D perspective view of a sleek dark dashboard interface on a professional monitor, industrial monitoring system" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3KDp6iBoQSudfpTk_vt4svyjSA8Va8J5YJL5r9ptJOuPCTk3aa1wbcs26pei_m6SbbqBgE35EI16oJZ4HjyC1C4HWaBvSUd59O1BOLZ4LX5WjeUw7GEYkX3bwUdztYk2TUiR33bplinlGPQqBxig-LakuuRbXc8HonqH5KWslrmDN3UohyiyBeaxYeYM8dsBedSm5RW8yajkqM3pmb1f5aGDOFvyJjixhEtwyrvxfhqwLYZwwgQ_qgjfhm-XhklJ7lk4JnBX-In9R"/>
+<div class="absolute inset-0 bg-on-surface/20 group-hover:bg-transparent transition-all"></div>
+</div>
+<h4 class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary mb-2">Металлургия</h4>
+<h3 class="text-2xl font-bold font-headline mb-4">SteelCore Integration</h3>
+<p class="text-sm text-secondary">Объединение 12 заводов в единую аналитическую панель с прогнозированием сбоев на базе ИИ.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[16/10] bg-surface-container-high overflow-hidden mb-8 relative shadow-xl">
+<img alt="Case 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="digital financial interface showing complex data structures and nodes, high-end fintech aesthetic, dark blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiYdBSScJVXfpjUqssI7ZYzRXTRcGlVasJB40QJ1bspuQkOSrHjCrnW3R-O5kTUkJAmBan-4ywkepBNfITiMPIOqCcELiFnjyviERFfxQ5iR8YP2uNFLN5mfIE8IFL9xexCdnUncM9pSjvUOuBY1PtJunQG2RtRalP_wlynSjP__p2K_Smk_9-ShINJ03wo5IewISSS092WIUrypeciBOm1-VdDsWOFkWk5nuDgUr-fXJpMOXY2dY0supa9joi1h94oWFahcAGkZCN"/>
+<div class="absolute inset-0 bg-on-surface/20 group-hover:bg-transparent transition-all"></div>
+</div>
+<h4 class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary mb-2">Финтех</h4>
+<h3 class="text-2xl font-bold font-headline mb-4">Nexus Transaction Layer</h3>
+<p class="text-sm text-secondary">Система межбанковских расчетов с пропускной способностью 1М транзакций в секунду.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[16/10] bg-surface-container-high overflow-hidden mb-8 relative shadow-xl">
+<img alt="Case 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="glowing server racks in a modern data center with blue and white lights, futuristic technology environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp5MA60asTXoYGg7Usa4GM6aG49T4qpQCAUwbwXEiQ148D98UkZL1t9O_4WgEXL2HGyTGa3SKE56-uRG_D_leFvcukSclknlekX9Gh4pfIlouKwqPpC3WyXRokJmxskWUFhXH7iMHLzRbPds-C7e3SyFdw5qCCdqltgc8j4RO1K52LydkoeDjX0XsWNh9luH1WjWRgAb1RzuUdWzIjjc64NNdB0LaRzYsblbw2OLtIZQOmDatxBmjAbIVaMdJcEwq7Ds1irlsPQOZb"/>
+<div class="absolute inset-0 bg-on-surface/20 group-hover:bg-transparent transition-all"></div>
+</div>
+<h4 class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary mb-2">Логистика</h4>
+<h3 class="text-2xl font-bold font-headline mb-4">Orbit Supply Chain</h3>
+<p class="text-sm text-secondary">Автоматизация складской логистики с использованием роевого интеллекта и RFID-меток.</p>
+</div>
+</div>
+</section>
+<!-- Process: The Integration Protocol -->
+<section class="py-32 bg-surface-container-low border-y border-outline-variant/20">
+<div class="max-w-[1440px] mx-auto px-8 md:px-20">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-on-surface mb-24 uppercase text-center">Протокол интеграции</h2>
+<div class="relative">
+<div class="hidden md:block absolute top-12 left-0 right-0 h-px bg-primary-fixed-dim/50 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+<!-- Step 01 -->
+<div class="text-center group">
+<div class="icon-3d-wrapper mb-8 inline-block">
+<div class="icon-3d-box w-24 h-24 rounded-2xl flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-4xl" data-icon="search_insights">search_insights</span>
+</div>
+</div>
+<h4 class="text-lg font-bold font-headline uppercase mb-4 tracking-widest group-hover:text-primary transition-colors">Аудит</h4>
+<p class="text-sm text-secondary px-4 leading-relaxed">Глубокое сканирование существующей инфраструктуры и выявление уязвимостей.</p>
+</div>
+<!-- Step 02 -->
+<div class="text-center group">
+<div class="icon-3d-wrapper mb-8 inline-block">
+<div class="icon-3d-box w-24 h-24 rounded-2xl flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-4xl" data-icon="architecture">architecture</span>
+</div>
+</div>
+<h4 class="text-lg font-bold font-headline uppercase mb-4 tracking-widest group-hover:text-primary transition-colors">Проект</h4>
+<p class="text-sm text-secondary px-4 leading-relaxed">Создание цифрового двойника будущей системы и расчет нагрузок.</p>
+</div>
+<!-- Step 03 -->
+<div class="text-center group">
+<div class="icon-3d-wrapper mb-8 inline-block">
+<div class="icon-3d-box w-24 h-24 rounded-2xl flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-4xl" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+</div>
+<h4 class="text-lg font-bold font-headline uppercase mb-4 tracking-widest group-hover:text-primary transition-colors">Синтез</h4>
+<p class="text-sm text-secondary px-4 leading-relaxed">Активная фаза внедрения и стыковки программных интерфейсов.</p>
+</div>
+<!-- Step 04 -->
+<div class="text-center group">
+<div class="icon-3d-wrapper mb-8 inline-block">
+<div class="icon-3d-box w-24 h-24 rounded-2xl flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-4xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</div>
+<h4 class="text-lg font-bold font-headline uppercase mb-4 tracking-widest group-hover:text-primary transition-colors">Запуск</h4>
+<p class="text-sm text-secondary px-4 leading-relaxed">Масштабирование на все узлы предприятия и обучение персонала.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-40 px-8 md:px-20 text-center">
+<div class="max-w-4xl mx-auto">
+<h2 class="font-headline text-7xl font-black text-on-surface mb-8 uppercase tracking-tighter">Ваш проект — <br/>наша ответственность.</h2>
+<p class="text-xl text-secondary mb-12 font-light">Готовы обсудить архитектуру вашего следующего большого шага?</p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<div class="relative group">
+<input class="bg-surface-container-low border-none focus:ring-2 focus:ring-primary py-5 px-10 w-80 font-headline uppercase tracking-widest text-sm transition-all" placeholder="Email предприятия" type="email"/>
+</div>
+<button class="metallic-gradient text-on-primary px-12 py-5 font-headline font-bold uppercase tracking-widest text-sm shadow-2xl active:scale-95 transition-all">Запросить аудит</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-900 w-full mt-20 border-t border-slate-200 dark:border-slate-800/50">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-12 py-20 max-w-[1440px] mx-auto">
+<div class="space-y-6">
+<div class="text-lg font-bold tracking-widest text-slate-800 dark:text-slate-200">MONOLITH</div>
+<p class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-600 dark:text-slate-400">
+                Системная интеграция высшего порядка. Проектирование будущего в настоящем.
+            </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 dark:text-white">Решения</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Manufacturing</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">ERP Systems</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Cloud Core</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 dark:text-white">Компания</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">About</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Projects</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs font-bold text-slate-900 dark:text-white">Юридическая информация</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white underline underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+<div class="px-12 py-8 max-w-[1440px] mx-auto border-t border-slate-200 dark:border-slate-800/50 text-center">
+<p class="font-['Space_Grotesk'] tracking-[0.1em] uppercase text-xs text-slate-600 dark:text-slate-400">© 2024 MONOLITH SYSTEMS INTEGRATION. ARCHITECTURAL PRECISION ASSURED.</p>
+</div>
+</footer>
+</body></html>
