@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { caseIndustrial, caseLogistics, casesHero } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
@@ -131,9 +132,9 @@ export default function Cases() {
               </div>
             </div>
             <div style={{ borderTop: '1px solid rgba(197, 198, 204, 0.2)', paddingTop: '1.5rem', marginTop: '1.5rem' }}>
-              <a className="st-link-arrow" href="#contacts" style={{ color: 'var(--primary)' }}>
+              <Link className="st-link-arrow" to="/contacts" style={{ color: 'var(--primary)' }}>
                 ENGINEERING VIEW <MaterialIcon name="arrow_right_alt" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

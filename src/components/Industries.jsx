@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { industriesMeta, methodologyIntro, methodologySteps, industryBlocks } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
@@ -80,9 +81,9 @@ export default function Industries() {
                       ОПЕРАЦИЙ В СУТКИ
                     </div>
                   </div>
-                  <a className="st-link-arrow" href="#cases" style={{ color: '#fff' }}>
+                  <Link className="st-link-arrow" to="/cases" style={{ color: '#fff' }}>
                     EXPLORE CASES <MaterialIcon name="arrow_right_alt" style={{ fontSize: '1rem' }} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

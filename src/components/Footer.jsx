@@ -1,4 +1,12 @@
+import { Link } from 'react-router-dom';
 import { footer } from '../data/siteData.js';
+
+const companyPaths = {
+  'О компании': '/about',
+  Кейсы: '/cases',
+  Контакты: '/contacts',
+  Карьера: '/contacts',
+};
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -6,9 +14,9 @@ export default function Footer() {
     <footer className="st-footer">
       <div className="st-footer-grid st-container">
         <div>
-          <div className="st-logo" style={{ marginBottom: '1.75rem' }}>
+          <Link className="st-logo" to="/" style={{ marginBottom: '1.75rem', display: 'inline-block' }}>
             Синтегратор
-          </div>
+          </Link>
           <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.65 }}>{footer.description}</p>
         </div>
         <div>
@@ -16,7 +24,7 @@ export default function Footer() {
           <ul className="st-footer-list">
             {footer.services.map((s) => (
               <li key={s}>
-                <a href="#services">{s}</a>
+                <Link to="/services">{s}</Link>
               </li>
             ))}
           </ul>
@@ -26,7 +34,7 @@ export default function Footer() {
           <ul className="st-footer-list">
             {footer.company.map((s) => (
               <li key={s}>
-                <a href={`#${s === 'О компании' ? 'about' : s === 'Кейсы' ? 'cases' : 'contacts'}`}>{s}</a>
+                <Link to={companyPaths[s] || '/'}>{s}</Link>
               </li>
             ))}
           </ul>
@@ -36,7 +44,7 @@ export default function Footer() {
           <ul className="st-footer-list">
             {footer.legal.map((s) => (
               <li key={s}>
-                <a href="#contacts">{s}</a>
+                <Link to="/contacts">{s}</Link>
               </li>
             ))}
           </ul>
@@ -47,8 +55,8 @@ export default function Footer() {
       <div className="st-footer-bottom">
         <div>© {year} Синтегратор. Все права защищены.</div>
         <div className="st-footer-soc">
-          <a href="#contacts">LinkedIn</a>
-          <a href="#contacts">Telegram</a>
+          <Link to="/contacts">LinkedIn</Link>
+          <Link to="/contacts">Telegram</Link>
         </div>
       </div>
     </footer>

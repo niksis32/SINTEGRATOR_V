@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { architectureBlueprint, servicesBento, servicesHero } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
@@ -12,9 +13,9 @@ function BentoCard(item) {
           </h3>
           <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.65 }}>{item.body}</p>
         </div>
-        <a className="st-link-arrow" href="#cases" style={{ color: '#fff', marginTop: '2.5rem' }}>
+        <Link className="st-link-arrow" to="/cases" style={{ color: '#fff', marginTop: '2.5rem' }}>
           {item.link} <MaterialIcon name="arrow_forward" />
-        </a>
+        </Link>
       </div>
     );
   }

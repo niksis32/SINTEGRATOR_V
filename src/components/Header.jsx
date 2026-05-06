@@ -1,26 +1,28 @@
-import { navItems } from '../data/siteData.js';
+import { NavLink, Link } from 'react-router-dom';
+import { navRoutes } from '../data/siteData.js';
 
 export default function Header() {
   return (
     <header className="st-header">
       <nav className="st-nav" aria-label="Основное меню">
-        <a className="st-logo" href="#home">
+        <Link className="st-logo" to="/">
           Синтегратор
-        </a>
+        </Link>
         <div className="st-nav-links">
-          {navItems.map((item, i) => (
-            <a
-              key={item.id}
-              className={`st-nav-link ${i === 1 ? 'st-nav-link--active' : ''}`.trim()}
-              href={`#${item.id}`}
+          {navRoutes.map((item) => (
+            <NavLink
+              key={item.path}
+              className={({ isActive }) => `st-nav-link${isActive ? ' st-nav-link--active' : ''}`.trim()}
+              to={item.path}
+              end={item.path === '/'}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
-        <a className="st-btn-head steel-gradient" href="#contacts">
+        <Link className="st-btn-head steel-gradient" to="/contacts">
           Discuss Project
-        </a>
+        </Link>
       </nav>
     </header>
   );

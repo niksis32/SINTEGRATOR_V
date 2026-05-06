@@ -1,16 +1,160 @@
-export const navItems = [
-  { id: 'services', label: 'Услуги' },
-  { id: 'industries', label: 'Отрасли' },
-  { id: 'cases', label: 'Кейсы' },
-  { id: 'about', label: 'О компании' },
-  { id: 'contacts', label: 'Контакты' },
+/** Маршруты как в макетах `page/stitch_sintegrator_*` */
+export const navRoutes = [
+  { path: '/', label: 'Главная' },
+  { path: '/services', label: 'Услуги' },
+  { path: '/industries', label: 'Отрасли' },
+  { path: '/cases', label: 'Кейсы' },
+  { path: '/about', label: 'О компании' },
+  { path: '/contacts', label: 'Контакты' },
 ];
 
-export const hero = {
+/** `page/stitch_sintegrator_Отрасли` — вводная секция */
+export const industriesIntro = {
   eyebrow: 'Industry Expertise',
   titleLine1: 'Отраслевая экспертиза',
   titleAccent: 'в холодном металле',
   lead: 'Мы проектируем цифровые экосистемы с точностью станков с ЧПУ. Интеграция как искусство промышленной архитектуры.',
+};
+
+/** `page/stitch_sintegrator_Главная` */
+export const homePage = {
+  hero: {
+    eyebrow: 'Industrial Synthesis',
+    title: 'СИНТЕГРАТОР',
+    lead: 'Создание монолитных ИТ-экосистем для промышленных гигантов. Мы преобразуем фрагментированные данные в архитектурное превосходство.',
+    bgImage:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBTO82tqUnJzswrlMJ22IYHMxs6lulRkKZ4iQgQgaoIYYalLEK4OTskyECOzcgbYg2vXvr6tqFEeYK9Wlkm4wCCCDqyrVoooT9G3NMSXH7W9ZMk3H7g9VACSXUkCxB4CUYWsQmwfmcKUz1v9aoo390Chicr6yNmR1MgnUFdMqkruhrPuwQGoHcTNve5y-JoYf8J4wf_4F7BhDSAjJa-MaRcC2lmp6rj9J2dzwUGWn2q_BxN11R1te9S3sNRQZSxZA5GYU4t1nVo0c25',
+    primaryCta: 'Обсудить проект',
+    secondaryCta: 'Архитектура решения',
+  },
+  spheres: {
+    title: 'Сферы влияния',
+    lead: 'Масштабируемые решения для критически важных отраслей экономики, где надежность является единственным стандартом.',
+    cards: [
+      {
+        tag: 'Industry 4.0',
+        title: 'Manufacturing',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuC1GhMkPIfYco3VQCLrU2qJK-Q19KqxG9LviJgMIr6rSWUv18E-49bnrqKUc1LBfxHBQTMvWNbJ-dJXFTqraAFfWJFDhETdgZptYaxJdvNJyOuiOFcxkf4xBBPk_1NgancqChF6pCIfdtDFkArHfhGa5UrMaxUvtpfsjENj9bQWlgZP9yp6-XzpBDXclLImwXa_O196TRJOSXjdqcV3d0z6ds3i3Q5Bl94-fJkbwYL93u-FsPLOmhTAG8DW9ylkWeq1kFkgYEoC007Z',
+        alt: 'Manufacturing',
+      },
+      {
+        tag: 'Supply Chain',
+        title: 'Logistics',
+        image:
+          'https://lh3.googleusercontent.com/aida/ADBb0ugIRETEva0jM1causNvKnRbBArSMhPLmVOaGi5cEJCFvS91-nKoYPvk72XRSbVSSt4nLWbvCxufj9uSqCdqS_bgQRXhFi4G0vHoQEIl6vrHKNN7CtqqLHdqrarlgaSjSS9y4JehufQCnCtwfMR3Z1fWLIejLiT_1JpzpbP7RcwbQNny4PVYKtMPKoQicQ0Y285WYeLz55V1iqmilMGrcJcLHHNFFBzE32J0Y10wc7Gsn7DDNAd9iJZkAoo',
+        alt: 'Logistics',
+      },
+      {
+        tag: 'Enterprise',
+        title: 'B2B Systems',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuDXNNYTzomdq8mSrEHqqlrVMYqkDhMSV8zL1FMxVIgc3A7iqSQKW5iV3f88y2_1rn6HokRjDDvYRdB0X6GwV2R5cTvNml5QH3a41z0PMTPg34pbXvMp8OHoEJBwTjNGqLiqUK9c6sIcOW4B_B7TfJ5-K3f77EuKdkMuhONepBksWR-f8CbEovHqpZvSpZB3lMsArGfaRYOZBEZxZhViBeQoC4UENiOl9_NOH3v-lsT6ceQohMjQVm_c5Jc_lO1Hf08T0_obTKzAxVnU',
+        alt: 'B2B Enterprise Dashboard',
+      },
+    ],
+  },
+  chaos: {
+    title: 'Борьба с хаосом: Инженерный подход',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCmFWRm6AlG6ebCnjsivFHxTUX20aUCbLv5W6lWtsYxu3a7269mkkf4wgXIuTck8b8lVaQcICt3w3Q7ABXdCJ4yOBibneZ6I8OKZGpnY-sLl0tN9YwRPY-B5AIRDbBOTjlhfRbD2-BNm8Xys4R7px_BZeU5eTwnM9EKz95h5PJBYNzffY6aApLx1f1IBT1FRKKVn8ipfhjzGp_WODp8R69F82RBuwBqE2SS5tcwv-Acnqm6YfL-UDQhzOhLFZ4Z2wOtS7o2-Mxf0HqM',
+    chips: [
+      { label: 'Fragmentation', text: 'Data Silos eliminated through unified protocol.' },
+      { label: 'Human Factor', text: '98% error reduction via machine oversight.' },
+    ],
+    steps: [
+      {
+        num: '01',
+        title: 'Фрагментация ресурсов',
+        text: 'Разрозненные ИТ-решения создают слепые зоны. Мы объединяем их в единую консолидированную структуру управления.',
+      },
+      {
+        num: '02',
+        title: 'Человеческий фактор',
+        text: 'Автоматизация процессов исключает критические ошибки на уровне архитектуры данных, гарантируя точность 24/7.',
+      },
+    ],
+  },
+  serviceModules: {
+    title: 'Сервисные модули',
+    cards: [
+      {
+        title: 'CRM',
+        body: 'Интеллектуальное управление взаимоотношениями с клиентами в B2B секторе.',
+        image:
+          'https://lh3.googleusercontent.com/aida/ADBb0uhTfl3v0NhFfIATvUAsLquX8HV-Y3ud0Tlwbt6PmdpU8SSEUahfVcfjI8Iy8iNlsD9nMiZnScJlZLWXyK-efO7rluMp2d_IMXjUJoUIapG9Fb9sYTtcQfT0_4QE-NIU7wZGLawRIq-iyUpHkeF4F6GzvV1AqxKAsnrCGfENADjHdM7VHm_1OlZXfhLQ50_ROfyVTQ1U1KpUExhSqx9VUy7nbykZa7bzckM4zKJGXNtNJl5e_oRnTEPTu8awQG1KN4LAU4BXsGWMI0Q',
+      },
+      {
+        title: 'ERP',
+        body: 'Планирование ресурсов предприятия с точностью до миллисекунд.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuBTO82tqUnJzswrlMJ22IYHMxs6lulRkKZ4iQgQgaoIYYalLEK4OTskyECOzcgbYg2vXvr6tqFEeYK9Wlkm4wCCCDqyrVoooT9G3NMSXH7W9ZMk3H7g9VACSXUkCxB4CUYWsQmwfmcKUz1v9aoo390Chicr6yNmR1MgnUFdMqkruhrPuwQGoHcTNve5y-JoYf8J4wf_4F7BhDSAjJa-MaRcC2lmp6rj9J2dzwUGWn2q_BxN11R1te9S3sNRQZSxZA5GYU4t1nVo0c25',
+      },
+      {
+        title: 'Doc Flow',
+        body: 'Безбумажное производство и юридически значимый документооборот.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuCmFWRm6AlG6ebCnjsivFHxTUX20aUCbLv5W6lWtsYxu3a7269mkkf4wgXIuTck8b8lVaQcICt3w3Q7ABXdCJ4yOBibneZ6I8OKZGpnY-sLl0tN9YwRPY-B5AIRDbBOTjlhfRbD2-BNm8Xys4R7px_BZeU5eTwnM9EKz95h5PJBYNzffY6aApLx1f1IBT1FRKKVn8ipfhjzGp_WODp8R69F82RBuwBqE2SS5tcwv-Acnqm6YfL-UDQhzOhLFZ4Z2wOtS7o2-Mxf0HqM',
+      },
+      {
+        title: 'Unified API',
+        body: 'Бесшовная интеграция внешних сервисов в корпоративное ядро.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuDXNNYTzomdq8mSrEHqqlrVMYqkDhMSV8zL1FMxVIgc3A7iqSQKW5iV3f88y2_1rn6HokRjDDvYRdB0X6GwV2R5cTvNml5QH3a41z0PMTPg34pbXvMp8OHoEJBwTjNGqLiqUK9c6sIcOW4B_B7TfJ5-K3f77EuKdkMuhONepBksWR-f8CbEovHqpZvSpZB3lMsArGfaRYOZBEZxZhViBeQoC4UENiOl9_NOH3v-lsT6ceQohMjQVm_c5Jc_lO1Hf08T0_obTKzAxVnU',
+      },
+    ],
+  },
+  keyOffer: {
+    titleLine1: 'Строим на века.',
+    titleAccent: 'Без компромиссов.',
+    lead: 'Наши системы не просто решают текущие задачи — они создают фундамент, который не потребует замены через десятилетие. Это инженерная клятва качества.',
+    cta: 'Приступить к проектированию',
+    bgImage:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDCUzcUknO1b6QcJq9QGjArIm61Fx2QmR0s3Y9f7m4Cq7pxkKtHRl0vDAWu1JQAzmFUZLjLBMCPJuvJdg8EBVzsw1DLX0Eb67BA3kgDu-L2MGipG7ikqqjhY8FcCpaARcFHHLJvTC-D-cz0mgAiChJ1C5WH7BgIjfpLHZsmzH_A6pEjFX8W1sCyluoBPxQs3ZdT6kpWzXWV-E7nI9qkOL2JvqPaz3Pxln7dy9EzD_6LGDvUYjo25KqnMtT66rf9YdA-6Vl81HiD7Aan',
+  },
+  portfolio: {
+    title: 'Реализованные системы',
+    lead: 'Портфолио проектов национального масштаба и технологических прорывов.',
+    items: [
+      {
+        sector: 'Металлургия',
+        title: 'SteelCore Integration',
+        body: 'Объединение 12 заводов в единую аналитическую панель с прогнозированием сбоев на базе ИИ.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuA3KDp6iBoQSudfpTk_vt4svyjSA8Va8J5YJL5r9ptJOuPCTk3aa1wbcs26pei_m6SbbqBgE35EI16oJZ4HjyC1C4HWaBvSUd59O1BOLZ4LX5WjeUw7GEYkX3bwUdztYk2TUiR33bplinlGPQqBxig-LakuuRbXc8HonqH5KWslrmDN3UohyiyBeaxYeYM8dsBedSm5RW8yajkqM3pmb1f5aGDOFvyJjixhEtwyrvxfhqwLYZwwgQ_qgjfhm-XhklJ7lk4JnBX-In9R',
+      },
+      {
+        sector: 'Финтех',
+        title: 'Nexus Transaction Layer',
+        body: 'Система межбанковских расчетов с пропускной способностью 1М транзакций в секунду.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuAiYdBSScJVXfpjUqssI7ZYzRXTRcGlVasJB40QJ1bspuQkOSrHjCrnW3R-O5kTUkJAmBan-4ywkepBNfITiMPIOqCcELiFnjyviERFfxQ5iR8YP2uNFLN5mfIE8IFL9xexCdnUncM9pSjvUOuBY1PtJunQG2RtRalP_wlynSjP__p2K_Smk_9-ShINJ03wo5IewISSS092WIUrypeciBOm1-VdDsWOFkWk5nuDgUr-fXJpMOXY2dY0supa9joi1h94oWFahcAGkZCN',
+      },
+      {
+        sector: 'Логистика',
+        title: 'Orbit Supply Chain',
+        body: 'Автоматизация складской логистики с использованием роевого интеллекта и RFID-меток.',
+        image:
+          'https://lh3.googleusercontent.com/aida-public/AB6AXuBp5MA60asTXoYGg7Usa4GM6aG49T4qpQCAUwbwXEiQ148D98UkZL1t9O_4WgEXL2HGyTGa3SKE56-uRG_D_leFvcukSclknlekX9Gh4pfIlouKwqPpC3WyXRokJmxskWUFhXH7iMHLzRbPds-C7e3SyFdw5qCCdqltgc8j4RO1K52LydkoeDjX0XsWNh9luH1WjWRgAb1RzuUdWzIjjc64NNdB0LaRzYsblbw2OLtIZQOmDatxBmjAbIVaMdJcEwq7Ds1irlsPQOZb',
+      },
+    ],
+  },
+  protocol: {
+    title: 'Протокол интеграции',
+    steps: [
+      { icon: 'search_insights', title: 'Аудит', text: 'Глубокое сканирование существующей инфраструктуры и выявление уязвимостей.' },
+      { icon: 'architecture', title: 'Проект', text: 'Создание цифрового двойника будущей системы и расчет нагрузок.' },
+      { icon: 'precision_manufacturing', title: 'Синтез', text: 'Активная фаза внедрения и стыковки программных интерфейсов.' },
+      { icon: 'rocket_launch', title: 'Запуск', text: 'Масштабирование на все узлы предприятия и обучение персонала.' },
+    ],
+  },
+  closing: {
+    titleLine1: 'Ваш проект —',
+    titleLine2: 'наша ответственность.',
+    lead: 'Готовы обсудить архитектуру вашего следующего большого шага?',
+    emailPlaceholder: 'Email предприятия',
+    cta: 'Запросить аудит',
+  },
 };
 
 export const industriesMeta = {
@@ -145,6 +289,18 @@ export const caseLogistics = {
   synthItems: ['Cloud-Native кластер', 'Real-time аналитика'],
 };
 
+/** `page/stitch_sintegrator_Кейсы` — финальный CTA */
+export const casesFinalCta = {
+  line1: 'Ваш проект —',
+  accent: 'следующий',
+  line2: 'в списке',
+  body: 'Мы беремся за задачи, которые другие считают невозможными. Оставьте заявку на глубокий аудит вашей текущей архитектуры.',
+  primaryLabel: 'Начать сотрудничество',
+  secondaryLabel: 'Получить презентацию',
+  image:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAfgFLdfRGesawZQayI0xMnWGTEm4b9G91Rp4-7ssJQjgHojNq6886S3VMchlZ-VWYJGkaUVaIc7i7tUWRLGpI5MNFQe5sqssTG4n_qKmZHXHQi_fB8fCHPufrzAtRJao8947wUlo3gRRKNi9ra1nXbIuebAZ4ZdTH8nzeoqQknVdPb-FOyOOmW9g5mg8eU0niUFHnt_VddMlwmo6OtKfbg_p3_B1QpWZWh__MJOdtjGMOZsKDDtokflsXfFwna-td8vS4fSfou0leV',
+};
+
 export const testimonials = {
   eyebrow: 'Голоса индустрии',
   title: 'Репутация, подтвержденная кодом',
@@ -224,6 +380,54 @@ export const aboutValues = {
       body: 'Мгновенная реакция на изменения рынка и оперативное внедрение сложнейших технологических стеков.',
       filled: true,
     },
+  ],
+};
+
+/** `page/stitch_sintegrator_О компании` — команда */
+export const aboutTeam = {
+  eyebrow: 'Интеллектуальный капитал',
+  title: 'Наши Архитекторы',
+  members: [
+    {
+      name: 'Александр Волков',
+      role: 'Главный инженер проектов',
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCibQnUczyV5ZqGZ2tpLQmAuHR9EcC0nTuQz6-dPjCSlsKuszx6-1YDI6IE2ayy5Ef8_pS2TfR5j-Ifm1c8fZlt1T5N1Jk-tEIJCJd2P1sk1mL_QSNI4XWGP1ZfMGhaOmlPXTx1tGeq1vRJ0sLErOTA42x2tjuiU89WQPEiT4C40-MuBiCBfTVVT2TZ1HOd4YEE7TLT7ifwxSXkFPpblX3jaTxlP1DV_HUXDwkyZXbU9mWMgE4bQMJakAaiVi2hPOu-Xq5-iD0qqKfo',
+    },
+    {
+      name: 'Елена Соколова',
+      role: 'Ведущий ИТ-архитектор',
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuD1dhnF_SsqBjV3Qjzb61_BsIRBs03Bj3v9wQ7ValmCEnJjphqShoT7wOY7m4GOrjluWu3_ARcHgRYr0WLsR2xn8gpiyQ7EdJfRLrXJs9mKG20D63ZXPHm-VvBZAjMKkKtpBFyMQzYSVFGD1NFni3j6OZTb7m1lXFfiZFTHG8V6VOSFGprim6OwUq19K46qeziAwsYvKFlUgaKVNgnrNJc_LOBHm1Z7_kw_IJPZgRDyxs9KdqcHGEJZrGYQ1_Ch-W8M7lBlu3PQ6k5M',
+    },
+    {
+      name: 'Дмитрий Морозов',
+      role: 'Технический директор',
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCOjWSrFZ8p0XUfXjSOleC9GmuVKnMaIRyT8mvU1dx6ljxme4I4NZX6nVtJUc5FiDl8d1HTzaGIoejlDgnj4Xoj6CgoV0dSY9KPYSDtosiTyVrML3E45fkJqBfuNijRvUU0jfB076fLMT_hwsTZNjcvAfW14Vw6s3vg4zjJtI77nMN0RLNJRwbISalKqOlN5r6_aWn61HVmJ0A1tRQOZBAfBFum5Z0hFEWfMymH2WyryG-ddzWOWeKVSHKn0Nvb-L4nDc8isomnG_th',
+    },
+  ],
+};
+
+/** `page/stitch_sintegrator_О компании` — лицензии */
+export const aboutLicenses = {
+  title: 'Лицензии и стандарты',
+  lead: 'Мы обладаем всеми необходимыми государственными и международными допусками для реализации проектов любой категории сложности, включая критическую инфраструктуру.',
+  items: [
+    {
+      icon: 'verified',
+      title: 'ISO 9001:2015',
+      text: 'Международный стандарт менеджмента качества',
+    },
+    {
+      icon: 'gpp_good',
+      title: 'Лицензия ФСТЭК',
+      text: 'На деятельность по технической защите информации',
+    },
+  ],
+  docImages: [
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuA3jEeNlhz0N1Z8K85kLiWitWa4EdXd8exQqieW77bpnZidharFs9eBAxFV3rGr4m_Job4cOMc5ZI5GLsHKZaXCifa0CrJDEnkKCo1GOSxgbdzJ7hKobCU_It9kMFbpdg_ubQdLEQFz1SAPkCDAaLtFtqSsHn_XA_nXw-lRynu26-X-xX6Kwp0xHCP4BrXgeYBoFhRKX6FbxjNCqQxUqYRzqY7d_O1y_2Q3w6Xb7UJ1xCgCcb155Eh22MZgk3ZDmhqBYbGERXtsU9xk',
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDA4WD_kE8f3N6MoZufl_dwfarfwlv741MzzpS7Vf2wedaSe_yna2p9MxtvP2b5VGnxduTw_saUjgmDR4chx1ODAbVRGs3z-H500FcFnfKMig-zKVSP7D6u9D2v3FNN7Rm1vwukMbqSkoTDOhyD0hh0OrvMXhuIvKTIM3X3Otlx2xxd9YOrfdWEF_IVpQ8xI4U3mSAt8kgGaZWE0Bxub8M5WcI0fGPkNsUAqi2EL-MqyzBLheGd--dHUBBK_eurK22O1N0U6Fq4T-FC',
   ],
 };
 
