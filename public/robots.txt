@@ -1,6 +1,5 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-# Служебные страницы закрываются через meta robots в приложении (например /verify-email).
-
-Sitemap: https://sintegrator.ru/sitemap.xml
+# Сайт закрыт от индексации: при сборке было VITE_BLOCK_SEARCH_ROBOTS=true
+# Чтобы открыть: установите VITE_BLOCK_SEARCH_ROBOTS=false (или удалите) и пересоберите.
