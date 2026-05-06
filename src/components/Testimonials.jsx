@@ -1,7 +1,8 @@
-import { testimonials } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
 export default function Testimonials() {
+  const { testimonials } = useSiteData();
   return (
     <section className="st-testimonials">
       <div className="micro-grid" style={{ position: 'absolute', inset: 0, opacity: 0.2 }} />

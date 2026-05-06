@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { homePage } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
-const { hero, spheres, chaos, serviceModules, keyOffer, portfolio, protocol, closing } = homePage;
-
 export default function HomeLanding() {
+  const { homePage } = useSiteData();
+  const { hero, spheres, chaos, serviceModules, keyOffer, portfolio, protocol, closing } = homePage;
   return (
     <div className="st-home-root architectural-grid">
       <section className="st-home-hero-full">

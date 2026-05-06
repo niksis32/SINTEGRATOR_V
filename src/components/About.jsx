@@ -1,7 +1,8 @@
-import { aboutHero, aboutTimeline, aboutValues, aboutTeam, aboutLicenses } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
 export default function About() {
+  const { aboutHero, aboutTimeline, aboutValues, aboutTeam, aboutLicenses } = useSiteData();
   return (
     <>
       <section id="about">
@@ -17,10 +18,8 @@ export default function About() {
             >
               {aboutHero.eyebrow}
             </p>
-            <h2 className="st-display" style={{ color: 'var(--on-background)', marginBottom: '1.5rem' }}>
-              Архитектура
-              <br />
-              будущего
+            <h2 className="st-display" style={{ color: 'var(--on-background)', marginBottom: '1.5rem', whiteSpace: 'pre-line' }}>
+              {aboutHero.title}
             </h2>
             <p className="st-text-muted" style={{ fontSize: '1.125rem', maxWidth: '32rem', marginBottom: '2.5rem' }}>
               {aboutHero.lead}

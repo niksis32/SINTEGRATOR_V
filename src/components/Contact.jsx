@@ -1,7 +1,33 @@
-import { contactPage } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
+import { usePreferences } from '../contexts/PreferencesContext.jsx';
 import MaterialIcon from './MaterialIcon.jsx';
 
 export default function Contact() {
+  const { contactPage } = useSiteData();
+  const { lang } = usePreferences();
+
+  const ui = {
+    phone: lang === 'ru' ? 'Телефон' : 'Phone',
+    email: lang === 'ru' ? 'Электронная почта' : 'Email',
+    hq: lang === 'ru' ? 'Центральный офис' : 'Head office',
+    locations: lang === 'ru' ? 'Локации' : 'Locations',
+    yourName: lang === 'ru' ? 'Ваше имя' : 'Your name',
+    namePh: lang === 'ru' ? 'Алексей Иванов' : 'Alex Johnson',
+    emailLabel: lang === 'ru' ? 'Email адрес' : 'Email address',
+    company: lang === 'ru' ? 'Компания' : 'Company',
+    sector: lang === 'ru' ? 'Отрасль' : 'Industry',
+    message: lang === 'ru' ? 'Ваше сообщение' : 'Message',
+    messagePh: lang === 'ru' ? 'Опишите ваши задачи и цели...' : 'Describe your goals and constraints...',
+    agree: lang === 'ru' ? 'Согласен на обработку персональных данных' : 'I agree to personal data processing',
+    submit: lang === 'ru' ? 'Отправить запрос' : 'Send request',
+    mapTitle: lang === 'ru' ? 'Метка на карте' : 'Map marker',
+    mapHint: lang === 'ru' ? 'Нажмите для построения маршрута' : 'Click to build a route',
+    zoomIn: lang === 'ru' ? 'Увеличить' : 'Zoom in',
+    zoomOut: lang === 'ru' ? 'Уменьшить' : 'Zoom out',
+    sectors: lang === 'ru' ? ['Финтех', 'Производство', 'Логистика', 'Retail'] : ['FinTech', 'Manufacturing', 'Logistics', 'Retail'],
+    sectorDefault: lang === 'ru' ? 'Производство' : 'Manufacturing',
+  };
+
   return (
     <section id="contacts" className="st-contact-main st-container">
       <div className="st-contact-intro" style={{ paddingTop: 'clamp(1rem, 3vw, 2rem)' }}>
@@ -19,13 +45,13 @@ export default function Contact() {
       <div className="st-contact-body">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="glass-card" style={{ padding: '2.25rem', border: '1px solid rgb(255 255 255 / 0.4)', boxShadow: '0 8px 28px rgba(13,28,46,0.06)', display: 'flex', flexDirection: 'column', gap: '0' }}>
-            <ContactLine icon="call" label="Телефон" value={contactPage.phone} />
-            <ContactLine icon="mail" label="Электронная почта" value={contactPage.email} />
-            <ContactLine icon="location_on" label="Центральный офис" value={contactPage.address} isLast />
+            <ContactLine icon="call" label={ui.phone} value={contactPage.phone} />
+            <ContactLine icon="mail" label={ui.email} value={contactPage.email} />
+            <ContactLine icon="location_on" label={ui.hq} value={contactPage.address} isLast />
           </div>
           <div style={{ background: 'var(--surface-container-low)', padding: '2.25rem', border: '1px solid rgba(197, 198, 204, 0.14)' }}>
             <h3 className="domain-label" style={{ letterSpacing: '0.15em', marginBottom: '1.75rem', fontSize: '0.875rem' }}>
-              Локации
+              {ui.locations}
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
               {contactPage.locations.map((loc) => (
@@ -49,45 +75,45 @@ export default function Contact() {
             <form className="st-form-grid" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="st-field-label" htmlFor="name">
-                  Ваше имя
+                  {ui.yourName}
                 </label>
-                <input className="st-input" id="name" name="name" type="text" placeholder="Алексей Иванов" autoComplete="name" />
+                <input className="st-input" id="name" name="name" type="text" placeholder={ui.namePh} autoComplete="name" />
               </div>
               <div>
                 <label className="st-field-label" htmlFor="email">
-                  Email адрес
+                  {ui.emailLabel}
                 </label>
                 <input className="st-input" id="email" name="email" type="email" placeholder="email@company.com" autoComplete="email" />
               </div>
               <div>
                 <label className="st-field-label" htmlFor="company">
-                  Компания
+                  {ui.company}
                 </label>
                 <input className="st-input" id="company" name="company" type="text" placeholder="Global Systems" />
               </div>
               <div>
                 <label className="st-field-label" htmlFor="sector">
-                  Отрасль
+                  {ui.sector}
                 </label>
-                <select className="st-select" id="sector" name="sector" defaultValue="Производство">
-                  {['Финтех', 'Производство', 'Логистика', 'Retail'].map((o) => (
+                <select className="st-select" id="sector" name="sector" defaultValue={ui.sectorDefault}>
+                  {ui.sectors.map((o) => (
                     <option key={o}>{o}</option>
                   ))}
                 </select>
               </div>
               <div className="st-form-span-2">
                 <label className="st-field-label" htmlFor="message">
-                  Ваше сообщение
+                  {ui.message}
                 </label>
-                <textarea className="st-textarea" id="message" name="message" rows={5} placeholder="Опишите ваши задачи и цели..." />
+                <textarea className="st-textarea" id="message" name="message" rows={5} placeholder={ui.messagePh} />
               </div>
               <div className="st-form-span-2 st-form-footer">
                 <label className="st-checkbox-row" htmlFor="terms">
                   <input id="terms" name="terms" type="checkbox" style={{ accentColor: 'var(--primary)' }} />
-                  Согласен на обработку персональных данных
+                  {ui.agree}
                 </label>
                 <button className="st-btn-head steel-gradient monolith-shadow" style={{ letterSpacing: '0.08em', width: '100%', maxWidth: '18rem', justifySelf: 'end', borderRadius: '0.125rem' }} type="submit">
-                  Отправить запрос
+                  {ui.submit}
                 </button>
               </div>
             </form>
@@ -95,7 +121,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <MapBlock />
+      <MapBlock mapImage={contactPage.mapImage} ui={ui} />
     </section>
   );
 }
@@ -116,15 +142,15 @@ function ContactLine({ icon, label, value, isLast }) {
   );
 }
 
-function MapBlock() {
+function MapBlock({ mapImage, ui }) {
   return (
     <div style={{ marginTop: 'clamp(3rem, 8vw, 5rem)' }}>
       <div className="map-section">
-        <img alt="" src={contactPage.mapImage} />
+        <img alt="" src={mapImage} />
         <div className="map-overlay" />
         <div className="map-badge">
-          <h4>Метка на карте</h4>
-          <p>Нажмите для построения маршрута</p>
+          <h4>{ui.mapTitle}</h4>
+          <p>{ui.mapHint}</p>
         </div>
         <div className="map-marker-wrap">
           <div className="map-pulse" />
@@ -132,10 +158,10 @@ function MapBlock() {
           <div className="map-dot-core" />
         </div>
         <div style={{ position: 'absolute', bottom: '2rem', right: '2rem', zIndex: 20, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-          <button type="button" className="map-ctrl-btn" aria-label="Увеличить">
+          <button type="button" className="map-ctrl-btn" aria-label={ui.zoomIn}>
             <MaterialIcon name="add" style={{ color: '#fff', fontSize: '1.25rem' }} />
           </button>
-          <button type="button" className="map-ctrl-btn" aria-label="Уменьшить">
+          <button type="button" className="map-ctrl-btn" aria-label={ui.zoomOut}>
             <MaterialIcon name="remove" style={{ color: '#fff', fontSize: '1.25rem' }} />
           </button>
         </div>

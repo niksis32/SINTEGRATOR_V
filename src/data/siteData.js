@@ -1,23 +1,27 @@
-/** Маршруты как в макетах `page/stitch_sintegrator_*` */
-export const navRoutes = [
-  { path: '/', label: 'Главная' },
-  { path: '/services', label: 'Услуги' },
-  { path: '/industries', label: 'Отрасли' },
-  { path: '/cases', label: 'Кейсы' },
-  { path: '/about', label: 'О компании' },
-  { path: '/contacts', label: 'Контакты' },
-];
+import { useMemo } from 'react';
+import { usePreferences } from '../contexts/PreferencesContext.jsx';
 
-/** `page/stitch_sintegrator_Отрасли` — вводная секция */
-export const industriesIntro = {
-  eyebrow: 'Industry Expertise',
-  titleLine1: 'Отраслевая экспертиза',
-  titleAccent: 'в холодном металле',
-  lead: 'Мы проектируем цифровые экосистемы с точностью станков с ЧПУ. Интеграция как искусство промышленной архитектуры.',
-};
+const DATA_RU = {
+  /** Маршруты как в макетах `page/stitch_sintegrator_*` */
+  navRoutes: [
+    { path: '/', label: 'Главная' },
+    { path: '/services', label: 'Услуги' },
+    { path: '/industries', label: 'Отрасли' },
+    { path: '/cases', label: 'Кейсы' },
+    { path: '/about', label: 'О компании' },
+    { path: '/contacts', label: 'Контакты' },
+  ],
 
-/** `page/stitch_sintegrator_Главная` */
-export const homePage = {
+  /** `page/stitch_sintegrator_Отрасли` — вводная секция */
+  industriesIntro: {
+    eyebrow: 'Industry Expertise',
+    titleLine1: 'Отраслевая экспертиза',
+    titleAccent: 'в холодном металле',
+    lead: 'Мы проектируем цифровые экосистемы с точностью станков с ЧПУ. Интеграция как искусство промышленной архитектуры.',
+  },
+
+  /** `page/stitch_sintegrator_Главная` */
+  homePage: {
   hero: {
     eyebrow: 'Industrial Synthesis',
     title: 'СИНТЕГРАТОР',
@@ -155,33 +159,33 @@ export const homePage = {
     emailPlaceholder: 'Email предприятия',
     cta: 'Запросить аудит',
   },
-};
+  },
 
-export const industriesMeta = {
-  title: 'ПРОТОКОЛ ОТРАСЛЕЙ',
-  watermark: 'DOMAINS',
-};
+  industriesMeta: {
+    title: 'ПРОТОКОЛ ОТРАСЛЕЙ',
+    watermark: 'DOMAINS',
+  },
 
-export const industryBlocks = {
+  industryBlocks: {
   manufacturingImage:
     "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkZdtq2c5CyUtVf8897tyt9u9HUWy_nFUSKrsU-HIaeZjleoL1Ba6SdTCDRMc5cLOeLWf86nHCb1X0WkTOcrulc3A2xAISDLLos1zAQsdXOU0UFTlqMkKD_l_mF3Yp8CP7o-HH_aUyvcn3wsNldUNNeBvksyAD6EZhdj1gZUGScPAmHvF2Kq_ZXxfb55tkeqS7laeU3D2nRNqADGGBrF8jOy3E0AuV21e02DS33PYhIAUArWaPKF3gU_B1qUAMMZZTgpvwuFOee6hN')",
   logisticsImage:
     "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUyXhUpLr0spEHGpD78tIqpt56htyaQM6ErHMjXhmd2l0h5oFFOT8WogM0lYXcB8ooQOyEbLGB8cDGV0n7BeV7r0fSwd0dORbNJCUbTaV-QJkhOm-N8sUekELDoqN1Pfghe9Ivqlk9AotLKJTH1xdFJcZUtFFZlNkDbJeVSzmpfDtNwB94czfqdCDKG5Y3a-xksWMJtQlYLyIEBd3ZZ7jAj1WE-HvQJeDt2ykJ1Qq1WaW9VFa0Bl2IEdFO46Ajuv2_OInvhu00YFmY')",
-};
+  },
 
-export const methodologySteps = [
-  ['01', 'Аудит инфраструктуры'],
-  ['02', 'Проектирование ядра'],
-  ['03', 'Бесшовная миграция'],
-];
+  methodologySteps: [
+    ['01', 'Аудит инфраструктуры'],
+    ['02', 'Проектирование ядра'],
+    ['03', 'Бесшовная миграция'],
+  ],
 
-export const methodologyIntro = {
-  title: 'Методология внедрения',
-  text: 'Наш подход базируется на «Архитектурной жесткости» — каждый модуль системы проходит 4 уровня тестирования под нагрузкой.',
-  tags: ['Reliability First', 'Zero Downtime', 'Scale Ready'],
-};
+  methodologyIntro: {
+    title: 'Методология внедрения',
+    text: 'Наш подход базируется на «Архитектурной жесткости» — каждый модуль системы проходит 4 уровня тестирования под нагрузкой.',
+    tags: ['Reliability First', 'Zero Downtime', 'Scale Ready'],
+  },
 
-export const servicesHero = {
+  servicesHero: {
   eyebrow: 'Industrial Excellence',
   title: 'Бизнес-ценность',
   titleAccent: 'технологий',
@@ -190,9 +194,9 @@ export const servicesHero = {
   uptimeLabel: 'Uptime Service Level',
   heroImage:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuC_ptym7yjuI0HY7_M9wjtpx5TROBCpZrelthPDIdFXLhTbQQ60wXXjw4Cadh_QICFx9bBNE2_KbBH754lZ999Fo2Z5Iu_9cM4iH61kRAl2MLkf7FpaBj32danvkz6wzi9GrllRTda3wlI4QNYjDCNg1SM5hzjmMeeuaUwfD92q9EKzu9jgd4bKtxlIMJqXBLiHSyIspubU0cka_32rg0BryH4wkL6stxqRLvA9fVkN6TH5_8SU1i_aftWYcQpupemwy7DD2xw20S-o',
-};
+  },
 
-export const servicesBento = [
+  servicesBento: [
   {
     span: 'large',
     variant: 'milled',
@@ -236,9 +240,9 @@ export const servicesBento = [
       { value: '-30%', label: 'Manager Load' },
     ],
   },
-];
+  ],
 
-export const architectureBlueprint = {
+  architectureBlueprint: {
   eyebrow: 'Blueprint',
   title: 'Архитектура решений',
   columns: [
@@ -251,9 +255,9 @@ export const architectureBlueprint = {
     },
     { icon: 'devices', title: 'Client Access', text: 'CRM, Mobile App, Partner Portal', highlight: false },
   ],
-};
+  },
 
-export const casesHero = {
+  casesHero: {
   eyebrow: 'Case Portfolio',
   title: 'Проекты',
   accent: 'высокого',
@@ -263,9 +267,9 @@ export const casesHero = {
     { value: '124+', label: 'Успешных интеграций' },
     { value: '40%', label: 'Средний рост KPI' },
   ],
-};
+  },
 
-export const caseIndustrial = {
+  caseIndustrial: {
   label: 'CASE #001 / INDUSTRIAL',
   title: 'Производственное предприятие: Цифровая вертикаль',
   body: 'Синхронизация ERP с цеховым уровнем (MES) в условиях 24/7. Внедрение шины данных на базе кастомного брокера сообщений.',
@@ -276,9 +280,9 @@ export const caseIndustrial = {
     { value: '-15%', label: 'Брак' },
     { value: '9 мес', label: 'ROI' },
   ],
-};
+  },
 
-export const caseLogistics = {
+  caseLogistics: {
   label: 'CASE #002 / LOGISTICS',
   title: 'Логистическая компания: Масштабируемая экосистема',
   body: 'Трансформация разрозненных складских терминалов в единый управляемый контур. Мы внедрили систему реального времени, которая оркестрирует сотни автономных узлов.',
@@ -287,10 +291,10 @@ export const caseLogistics = {
   stat: { value: '99.8%', label: 'WMS Inventory Accuracy' },
   legacyItems: ['Локальные базы данных', 'Задержка данных 4 часа'],
   synthItems: ['Cloud-Native кластер', 'Real-time аналитика'],
-};
+  },
 
-/** `page/stitch_sintegrator_Кейсы` — финальный CTA */
-export const casesFinalCta = {
+  /** `page/stitch_sintegrator_Кейсы` — финальный CTA */
+  casesFinalCta: {
   line1: 'Ваш проект —',
   accent: 'следующий',
   line2: 'в списке',
@@ -299,9 +303,9 @@ export const casesFinalCta = {
   secondaryLabel: 'Получить презентацию',
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAfgFLdfRGesawZQayI0xMnWGTEm4b9G91Rp4-7ssJQjgHojNq6886S3VMchlZ-VWYJGkaUVaIc7i7tUWRLGpI5MNFQe5sqssTG4n_qKmZHXHQi_fB8fCHPufrzAtRJao8947wUlo3gRRKNi9ra1nXbIuebAZ4ZdTH8nzeoqQknVdPb-FOyOOmW9g5mg8eU0niUFHnt_VddMlwmo6OtKfbg_p3_B1QpWZWh__MJOdtjGMOZsKDDtokflsXfFwna-td8vS4fSfou0leV',
-};
+  },
 
-export const testimonials = {
+  testimonials: {
   eyebrow: 'Голоса индустрии',
   title: 'Репутация, подтвержденная кодом',
   items: [
@@ -324,9 +328,9 @@ export const testimonials = {
       role: 'Основатель, ТехноПоток',
     },
   ],
-};
+  },
 
-export const aboutHero = {
+  aboutHero: {
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAHyk9BxjlJApO2UvKVIw56v6z9hO_7xNvwp9FLdpyR3PaXCU8I8rjCVHBDG8KTGcEFb2XBA-5l_uVDpATc84Gl2hSAz8Dc_7uHejG28FORjJuE219X4V-zIOFrP9etA3yZnP0SDOFhErjxYtaBq38JUjzqGHN9IXi8mPNPZQBMJPj6YlnGw9X14j9yWbS2u4faOmd-GSMvkaCpeLUP6dyLmaYoBaQ-XOvvMx6Bdv7ChEaOl6u0tp6qCtaJZ8Q9CMNFwf-OoyCcz9Hp',
   eyebrow: 'Фундаментальность и Инновации',
@@ -336,9 +340,9 @@ export const aboutHero = {
     { value: '15+', label: 'Лет опыта' },
     { value: '400+', label: 'Проектов' },
   ],
-};
+  },
 
-export const aboutTimeline = {
+  aboutTimeline: {
   title: 'История становления',
   items: [
     { year: '2009', title: 'Основание', text: 'Запуск первого инженерного бюро в области системной интеграции.' },
@@ -346,9 +350,9 @@ export const aboutTimeline = {
     { year: '2019', title: 'R&D Центр', text: 'Открытие собственной лаборатории для разработки инновационных ИТ-решений.' },
     { year: '2024', title: 'Экосистема', text: 'Формирование полноценной технологической экосистемы Синтегратор.' },
   ],
-};
+  },
 
-export const aboutValues = {
+  aboutValues: {
   title: 'Ценности, отлитые в стали',
   lead: 'Наши принципы — это не просто слова, а жесткие инженерные стандарты, которым мы следуем в каждом узле системы.',
   cards: [
@@ -381,10 +385,10 @@ export const aboutValues = {
       filled: true,
     },
   ],
-};
+  },
 
-/** `page/stitch_sintegrator_О компании` — команда */
-export const aboutTeam = {
+  /** `page/stitch_sintegrator_О компании` — команда */
+  aboutTeam: {
   eyebrow: 'Интеллектуальный капитал',
   title: 'Наши Архитекторы',
   members: [
@@ -407,10 +411,10 @@ export const aboutTeam = {
         'https://lh3.googleusercontent.com/aida-public/AB6AXuCOjWSrFZ8p0XUfXjSOleC9GmuVKnMaIRyT8mvU1dx6ljxme4I4NZX6nVtJUc5FiDl8d1HTzaGIoejlDgnj4Xoj6CgoV0dSY9KPYSDtosiTyVrML3E45fkJqBfuNijRvUU0jfB076fLMT_hwsTZNjcvAfW14Vw6s3vg4zjJtI77nMN0RLNJRwbISalKqOlN5r6_aWn61HVmJ0A1tRQOZBAfBFum5Z0hFEWfMymH2WyryG-ddzWOWeKVSHKn0Nvb-L4nDc8isomnG_th',
     },
   ],
-};
+  },
 
-/** `page/stitch_sintegrator_О компании` — лицензии */
-export const aboutLicenses = {
+  /** `page/stitch_sintegrator_О компании` — лицензии */
+  aboutLicenses: {
   title: 'Лицензии и стандарты',
   lead: 'Мы обладаем всеми необходимыми государственными и международными допусками для реализации проектов любой категории сложности, включая критическую инфраструктуру.',
   items: [
@@ -429,9 +433,9 @@ export const aboutLicenses = {
     'https://lh3.googleusercontent.com/aida-public/AB6AXuA3jEeNlhz0N1Z8K85kLiWitWa4EdXd8exQqieW77bpnZidharFs9eBAxFV3rGr4m_Job4cOMc5ZI5GLsHKZaXCifa0CrJDEnkKCo1GOSxgbdzJ7hKobCU_It9kMFbpdg_ubQdLEQFz1SAPkCDAaLtFtqSsHn_XA_nXw-lRynu26-X-xX6Kwp0xHCP4BrXgeYBoFhRKX6FbxjNCqQxUqYRzqY7d_O1y_2Q3w6Xb7UJ1xCgCcb155Eh22MZgk3ZDmhqBYbGERXtsU9xk',
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDA4WD_kE8f3N6MoZufl_dwfarfwlv741MzzpS7Vf2wedaSe_yna2p9MxtvP2b5VGnxduTw_saUjgmDR4chx1ODAbVRGs3z-H500FcFnfKMig-zKVSP7D6u9D2v3FNN7Rm1vwukMbqSkoTDOhyD0hh0OrvMXhuIvKTIM3X3Otlx2xxd9YOrfdWEF_IVpQ8xI4U3mSAt8kgGaZWE0Bxub8M5WcI0fGPkNsUAqi2EL-MqyzBLheGd--dHUBBK_eurK22O1N0U6Fq4T-FC',
   ],
-};
+  },
 
-export const ctaBeforeContact = {
+  ctaBeforeContact: {
   line1: 'Готовы закалить',
   accent: 'свой бизнес в цифре?',
   body: 'Получите индивидуальную архитектурную карту решения для вашей отрасли в течение 48 часов.',
@@ -439,9 +443,9 @@ export const ctaBeforeContact = {
   secondaryLabel: 'Скачать презентацию',
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuBexToGP45-78oW8ITLg4C60k62TOunqsxnhX2GEDHBDFxPOed7XVxo7RHmuZHrj4z5XzZr7k2uBJpmf9OVytFX-l-wvS-vzh0VPZ-Yf3iqbNlKWNu8rz80yC8VdLWTU1h6KruCY3pGadSh85QUkDafnve6VuT4_Huk_87avYTZkGan1JhoRnFu0aKWPtS5nIpd9gd0_AZ1OuFNp0lllBAjGkyAEfma24j7hRQ4UCWORdxUfP2KgX-GXNzRopYCj5WruOOC1HieKmDc',
-};
+  },
 
-export const ctaAfterServices = {
+  ctaAfterServices: {
   line1: 'Готовы к цифровой',
   accent: 'трансформации?',
   body:
@@ -450,9 +454,9 @@ export const ctaAfterServices = {
   secondaryLabel: 'Портфолио проектов',
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAfgFLdfRGesawZQayI0xMnWGTEm4b9G91Rp4-7ssJQjgHojNq6886S3VMchlZ-VWYJGkaUVaIc7i7tUWRLGpI5MNFQe5sqssTG4n_qKmZHXHQi_fB8fCHPufrzAtRJao8947wUlo3gRRKNi9ra1nXbIuebAZ4ZdTH8nzeoqQknVdPb-FOyOOmW9g5mg8eU0niUFHnt_VddMlwmo6OtKfbg_p3_B1QpWZWh__MJOdtjGMOZsKDDtokflsXfFwna-td8vS4fSfou0leV',
-};
+  },
 
-export const contactPage = {
+  contactPage: {
   title: 'Свяжитесь\nс нами',
   lead: 'Мы создаем технологическую основу для вашего бизнеса. Давайте обсудим, как наши решения могут масштабировать ваш успех.',
   phone: '+7 (495) 000-00-00',
@@ -466,14 +470,354 @@ export const contactPage = {
   formTitle: 'Новый проект?',
   mapImage:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuBg8khFdiEVpJMPdwfj10xhHxs2ClgPFpxsYB03MXQ7oPyAtv0EL7meByZ1viznbvimcKq3dfxmT-at2JqtKsOkeYuQRvXcKASezRhhniBju7yrSyRFOwCDHFxcIZrp-dFOkIKXuBZ8y0Jalvizwbh_PvGjbHBEInP5ZqoZWj01QMDjtPMoC065NN8BmHOg27b3bVgiX6Uq88DVIOqtBd9VfzdyjRFtmB6WJDyoD4e6pITDVHymDSxWhUXMurzz4PSaa0l6jw6rhjvL',
+  },
+
+  footer: {
+    brandName: 'Синтегратор',
+    headings: {
+      services: 'Услуги',
+      company: 'Компания',
+      legal: 'Юридическая информация',
+    },
+    description: 'Профессиональные решения в области системной интеграции и разработки ПО для бизнеса.',
+    services: ['Интеграция 1С', 'Внедрение CRM', 'B2B Разработка', 'Консалтинг'],
+    company: [
+      { label: 'О компании', path: '/about' },
+      { label: 'Кейсы', path: '/cases' },
+      { label: 'Контакты', path: '/contacts' },
+      { label: 'Карьера', path: '/contacts' },
+    ],
+    legal: [
+      { label: 'Политика конфиденциальности', path: '/contacts' },
+      { label: 'Условия использования', path: '/contacts' },
+    ],
+    address: 'Москва, Пресненская набережная, 12',
+    phone: '+7 (495) 000-00-00',
+    bottom: {
+      rights: 'Все права защищены.',
+      socials: [
+        { label: 'LinkedIn', path: '/contacts' },
+        { label: 'Telegram', path: '/contacts' },
+      ],
+    },
+  },
 };
 
-export const footer = {
-  description:
-    'Профессиональные решения в области системной интеграции и разработки ПО для бизнеса.',
-  services: ['Интеграция 1С', 'Внедрение CRM', 'B2B Разработка', 'Консалтинг'],
-  company: ['О компании', 'Кейсы', 'Контакты', 'Карьера'],
-  legal: ['Политика конфиденциальности', 'Условия использования'],
-  address: 'Москва, Пресненская набережная, 12',
-  phone: '+7 (495) 000-00-00',
+const DATA_EN = {
+  ...DATA_RU,
+  navRoutes: [
+    { path: '/', label: 'Home' },
+    { path: '/services', label: 'Services' },
+    { path: '/industries', label: 'Industries' },
+    { path: '/cases', label: 'Cases' },
+    { path: '/about', label: 'About' },
+    { path: '/contacts', label: 'Contact' },
+  ],
+  industriesIntro: {
+    eyebrow: 'Industry Expertise',
+    titleLine1: 'Industry expertise',
+    titleAccent: 'for cold steel',
+    lead: 'We design digital ecosystems with CNC-grade precision. Integration as industrial architecture.',
+  },
+  homePage: {
+    ...DATA_RU.homePage,
+    hero: {
+      ...DATA_RU.homePage.hero,
+      title: 'SINTEGRATOR',
+      lead: 'Monolithic IT ecosystems for industrial leaders. We turn fragmented data into architectural advantage.',
+      primaryCta: 'Discuss project',
+      secondaryCta: 'Solution blueprint',
+    },
+    spheres: {
+      ...DATA_RU.homePage.spheres,
+      title: 'Domains of impact',
+      lead: 'Scalable solutions for mission-critical industries where reliability is the only standard.',
+    },
+    chaos: {
+      ...DATA_RU.homePage.chaos,
+      title: 'Fighting chaos: an engineering approach',
+      steps: [
+        {
+          num: '01',
+          title: 'Resource fragmentation',
+          text: 'Disconnected IT solutions create blind spots. We consolidate them into a single, controlled management structure.',
+        },
+        {
+          num: '02',
+          title: 'Human factor',
+          text: 'Process automation removes critical errors at the data-architecture level, ensuring 24/7 accuracy.',
+        },
+      ],
+    },
+    serviceModules: {
+      ...DATA_RU.homePage.serviceModules,
+      title: 'Service modules',
+      cards: [
+        { ...DATA_RU.homePage.serviceModules.cards[0], body: 'Intelligent customer relationship management for B2B.' },
+        { ...DATA_RU.homePage.serviceModules.cards[1], body: 'Enterprise resource planning with millisecond-level precision.' },
+        { ...DATA_RU.homePage.serviceModules.cards[2], body: 'Paperless production and legally significant document workflows.' },
+        { ...DATA_RU.homePage.serviceModules.cards[3], body: 'Seamless integration of external services into the corporate core.' },
+      ],
+    },
+    keyOffer: {
+      ...DATA_RU.homePage.keyOffer,
+      titleLine1: 'Built to last.',
+      titleAccent: 'No compromises.',
+      lead: "Our systems don’t just solve today’s tasks — they create a foundation that won’t need replacement for decades. That’s an engineering pledge of quality.",
+      cta: 'Start architecture',
+    },
+    portfolio: {
+      ...DATA_RU.homePage.portfolio,
+      title: 'Delivered systems',
+      lead: 'A portfolio of national-scale projects and technological breakthroughs.',
+      items: [
+        { ...DATA_RU.homePage.portfolio.items[0], sector: 'Metallurgy', body: 'Unified 12 plants into a single analytics cockpit with AI-driven failure prediction.' },
+        { ...DATA_RU.homePage.portfolio.items[1], sector: 'FinTech', body: 'Interbank settlement layer with throughput up to 1M transactions per second.' },
+        { ...DATA_RU.homePage.portfolio.items[2], sector: 'Logistics', body: 'Warehouse automation using swarm intelligence and RFID tracking.' },
+      ],
+    },
+    protocol: {
+      ...DATA_RU.homePage.protocol,
+      title: 'Integration protocol',
+      steps: [
+        { icon: 'search_insights', title: 'Audit', text: 'Deep scan of the current landscape and weak-point discovery.' },
+        { icon: 'architecture', title: 'Design', text: 'A digital twin of the future system plus load calculations.' },
+        { icon: 'precision_manufacturing', title: 'Synthesis', text: 'Implementation and interface stitching phase.' },
+        { icon: 'rocket_launch', title: 'Launch', text: 'Scale across the enterprise and train the team.' },
+      ],
+    },
+    closing: {
+      ...DATA_RU.homePage.closing,
+      titleLine1: 'Your project —',
+      titleLine2: 'our responsibility.',
+      lead: 'Ready to discuss the architecture of your next big step?',
+      emailPlaceholder: 'Corporate email',
+      cta: 'Request audit',
+    },
+  },
+  industriesMeta: {
+    ...DATA_RU.industriesMeta,
+    title: 'INDUSTRY PROTOCOL',
+  },
+  methodologySteps: [
+    ['01', 'Infrastructure audit'],
+    ['02', 'Core design'],
+    ['03', 'Seamless migration'],
+  ],
+  methodologyIntro: {
+    ...DATA_RU.methodologyIntro,
+    title: 'Implementation methodology',
+    text: 'Our approach is based on “architectural rigidity” — every module passes 4 levels of load testing.',
+  },
+  servicesHero: {
+    ...DATA_RU.servicesHero,
+    title: 'Business value',
+    titleAccent: 'of technology',
+    lead: 'We design and deliver fault-tolerant digital ecosystems for enterprise. We turn technical complexity into operational efficiency.',
+  },
+  servicesBento: DATA_RU.servicesBento.map((c) => {
+    if (c.title === 'Интеграция Bitrix24 и 1С ERP') {
+      return {
+        ...c,
+        title: 'Bitrix24 ↔ 1C ERP integration',
+        body: 'We build seamless data exchange between front-office and production. End-to-end automation from lead to shipment.',
+        meta: [
+          { label: 'Stack', value: 'SOAP/REST, RabbitMQ, Enterprise Service Bus' },
+          { label: 'Outcome', value: '40% reduction in manual data entry' },
+        ],
+      };
+    }
+    if (c.title === 'CRM для сложных продаж') {
+      return { ...c, title: 'CRM for complex sales', body: 'Custom B2B pipelines with 6+ month cycles. Predictive analytics and scoring.', link: 'Explore solution' };
+    }
+    if (c.title === 'API-интеграции') {
+      return { ...c, title: 'API integrations', body: 'High-load API gateways to unite fragmented services into a single contour.' };
+    }
+    if (c.title === 'B2B Порталы') {
+      return { ...c, title: 'B2B portals', body: 'Partner self-service: online orders, real-time stock, and document workflow.', stats: c.stats };
+    }
+    return c;
+  }),
+  architectureBlueprint: {
+    ...DATA_RU.architectureBlueprint,
+    title: 'Solution architecture',
+    columns: [
+      { icon: 'dns', title: 'Core systems', text: 'ERP, Warehouse, Legacy Databases', highlight: false },
+      { icon: 'sync_alt', title: 'Sintegrator layer', text: 'Logic, Data Mapping, Security Gateways', highlight: true },
+      { icon: 'devices', title: 'Client access', text: 'CRM, Mobile App, Partner Portal', highlight: false },
+    ],
+  },
+  casesHero: {
+    ...DATA_RU.casesHero,
+    title: 'Projects',
+    accent: 'high',
+    titleLine2: 'impact',
+    lead: 'We build digital monoliths — systems that redefine efficiency across production and logistics. Each case is precision engineering.',
+    stats: [
+      { value: '124+', label: 'Successful integrations' },
+      { value: '40%', label: 'Average KPI growth' },
+    ],
+  },
+  caseIndustrial: {
+    ...DATA_RU.caseIndustrial,
+    title: 'Manufacturing: a digital vertical',
+    body: 'ERP-to-shopfloor (MES) synchronization in 24/7 mode. A data bus built on a custom message broker.',
+    metrics: [
+      { value: '+28%', label: 'Speed' },
+      { value: '-15%', label: 'Defects' },
+      { value: '9 mo', label: 'ROI' },
+    ],
+  },
+  caseLogistics: {
+    ...DATA_RU.caseLogistics,
+    title: 'Logistics: a scalable ecosystem',
+    body: 'From fragmented warehouse terminals to a single managed contour. Real-time orchestration for hundreds of autonomous nodes.',
+    legacyItems: ['Local databases', '4-hour data delay'],
+    synthItems: ['Cloud-native cluster', 'Real-time analytics'],
+  },
+  casesFinalCta: {
+    ...DATA_RU.casesFinalCta,
+    line1: 'Your project —',
+    accent: 'next',
+    line2: 'on the list',
+    body: 'We take on challenges others consider impossible. Leave a request for a deep audit of your current architecture.',
+    primaryLabel: 'Start collaboration',
+    secondaryLabel: 'Get presentation',
+  },
+  testimonials: {
+    ...DATA_RU.testimonials,
+    eyebrow: 'Industry voices',
+    title: 'Reputation proven by code',
+    items: [
+      {
+        quote:
+          'Sintegrator didn’t just set up data exchange — they built a foundation we now use to drive our production strategy for the next 5 years.',
+        name: 'Alexander V.',
+        role: 'CTO, PromSplav',
+      },
+      {
+        quote:
+          'The integration went live with zero downtime. The team showed exceptional planning and expertise in complex system nodes.',
+        name: 'Maria S.',
+        role: 'COO, GlobalLogistic',
+      },
+      {
+        quote:
+          'The only partners who speak the language of business and architecture at the same time. The results exceeded our financial expectations.',
+        name: 'Igor D.',
+        role: 'Founder, TechnoPotok',
+      },
+    ],
+  },
+  aboutHero: {
+    ...DATA_RU.aboutHero,
+    eyebrow: 'Fundamentals & Innovation',
+    title: 'Architecture of the future',
+    lead: 'We build the technological foundation for global leaders — turning engineering precision into digital reality.',
+    metrics: [
+      { value: '15+', label: 'Years of experience' },
+      { value: '400+', label: 'Projects delivered' },
+    ],
+  },
+  aboutTimeline: {
+    ...DATA_RU.aboutTimeline,
+    title: 'How it started',
+    items: [
+      { year: '2009', title: 'Founded', text: 'Launched the first engineering bureau in systems integration.' },
+      { year: '2014', title: 'Scaling', text: 'Entered international markets and obtained ISO certifications.' },
+      { year: '2019', title: 'R&D Center', text: 'Opened an in-house lab for innovative IT solutions.' },
+      { year: '2024', title: 'Ecosystem', text: 'Formed a full-fledged Sintegrator technology ecosystem.' },
+    ],
+  },
+  aboutValues: {
+    ...DATA_RU.aboutValues,
+    title: 'Values forged in steel',
+    lead: 'Our principles are not just words — they are strict engineering standards we follow in every system node.',
+    cards: [
+      { ...DATA_RU.aboutValues.cards[0], title: 'Reliability', body: '99.99% fault tolerance. We design systems that withstand any load.' },
+      { ...DATA_RU.aboutValues.cards[1], title: 'Precision', body: 'Algorithmic exactness. We reduce human error through deep automation.' },
+      { ...DATA_RU.aboutValues.cards[2], title: 'System thinking', body: 'A holistic view of enterprise architecture. One structure for all components.' },
+      { ...DATA_RU.aboutValues.cards[3], title: 'Speed', body: 'Fast reaction to change and rapid delivery of complex stacks.' },
+    ],
+  },
+  aboutTeam: {
+    ...DATA_RU.aboutTeam,
+    eyebrow: 'Intellectual capital',
+    title: 'Our architects',
+    members: [
+      { ...DATA_RU.aboutTeam.members[0], role: 'Principal project engineer' },
+      { ...DATA_RU.aboutTeam.members[1], role: 'Lead IT architect' },
+      { ...DATA_RU.aboutTeam.members[2], role: 'CTO' },
+    ],
+  },
+  aboutLicenses: {
+    ...DATA_RU.aboutLicenses,
+    title: 'Licenses & standards',
+    lead: 'We hold all necessary state and international approvals for projects of any complexity, including critical infrastructure.',
+    items: [
+      { ...DATA_RU.aboutLicenses.items[0], text: 'International quality management standard' },
+      { ...DATA_RU.aboutLicenses.items[1], text: 'For technical information security activities' },
+    ],
+  },
+  ctaBeforeContact: {
+    ...DATA_RU.ctaBeforeContact,
+    line1: 'Ready to temper',
+    accent: 'your business in digital?',
+    body: 'Get a tailored solution architecture map for your industry within 48 hours.',
+    primaryLabel: 'Request consultation',
+    secondaryLabel: 'Download deck',
+  },
+  ctaAfterServices: {
+    ...DATA_RU.ctaAfterServices,
+    line1: 'Ready for digital',
+    accent: 'transformation?',
+    body: 'Discuss your challenge with our experts. We’ll prepare an initial technical audit and architecture within 3 business days.',
+    primaryLabel: 'Request consultation',
+    secondaryLabel: 'Project portfolio',
+  },
+  contactPage: {
+    ...DATA_RU.contactPage,
+    title: 'Contact\nus',
+    lead: 'We build the technological backbone for your business. Let’s discuss how our solutions can scale your success.',
+    address: 'Moscow, Technologies St., 42',
+    locations: [
+      { city: 'Saint Petersburg', line: 'Digitalization Emb., 15, office 302' },
+      { city: 'Yekaterinburg', line: 'Innovation BC, Code St., 88' },
+      { city: 'Astana', line: 'Future Ave., 12, Tech Park' },
+    ],
+    formTitle: 'New project?',
+  },
+  footer: {
+    ...DATA_RU.footer,
+    brandName: 'Sintegrator',
+    headings: { services: 'Services', company: 'Company', legal: 'Legal' },
+    description: 'Professional systems integration and software development for business.',
+    services: ['1C integration', 'CRM implementation', 'B2B development', 'Consulting'],
+    company: [
+      { label: 'About', path: '/about' },
+      { label: 'Cases', path: '/cases' },
+      { label: 'Contact', path: '/contacts' },
+      { label: 'Careers', path: '/contacts' },
+    ],
+    legal: [
+      { label: 'Privacy policy', path: '/contacts' },
+      { label: 'Terms of use', path: '/contacts' },
+    ],
+    bottom: {
+      rights: 'All rights reserved.',
+      socials: [
+        { label: 'LinkedIn', path: '/contacts' },
+        { label: 'Telegram', path: '/contacts' },
+      ],
+    },
+  },
 };
+
+export function getSiteData(lang) {
+  return lang === 'en' ? DATA_EN : DATA_RU;
+}
+
+export function useSiteData() {
+  const { lang } = usePreferences();
+  return useMemo(() => getSiteData(lang), [lang]);
+}

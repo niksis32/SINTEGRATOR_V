@@ -1,26 +1,20 @@
 import { Link } from 'react-router-dom';
-import { footer } from '../data/siteData.js';
-
-const companyPaths = {
-  'О компании': '/about',
-  Кейсы: '/cases',
-  Контакты: '/contacts',
-  Карьера: '/contacts',
-};
+import { useSiteData } from '../data/siteData.js';
 
 export default function Footer() {
+  const { footer } = useSiteData();
   const year = new Date().getFullYear();
   return (
     <footer className="st-footer">
       <div className="st-footer-grid st-container">
         <div>
           <Link className="st-logo" to="/" style={{ marginBottom: '1.75rem', display: 'inline-block' }}>
-            Синтегратор
+            {footer.brandName}
           </Link>
-          <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.65 }}>{footer.description}</p>
+          <p className="st-footer-desc">{footer.description}</p>
         </div>
         <div>
-          <h5>Услуги</h5>
+          <h5>{footer.headings.services}</h5>
           <ul className="st-footer-list">
             {footer.services.map((s) => (
               <li key={s}>
@@ -30,33 +24,38 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5>Компания</h5>
+          <h5>{footer.headings.company}</h5>
           <ul className="st-footer-list">
             {footer.company.map((s) => (
-              <li key={s}>
-                <Link to={companyPaths[s] || '/'}>{s}</Link>
+              <li key={s.label}>
+                <Link to={s.path}>{s.label}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div>
-          <h5>Юридическая информация</h5>
+          <h5>{footer.headings.legal}</h5>
           <ul className="st-footer-list">
             {footer.legal.map((s) => (
-              <li key={s}>
-                <Link to="/contacts">{s}</Link>
+              <li key={s.label}>
+                <Link to={s.path}>{s.label}</Link>
               </li>
             ))}
           </ul>
-          <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '1.5rem' }}>{footer.address}</p>
+          <p className="st-footer-address">{footer.address}</p>
           <p className="st-footer-phone">{footer.phone}</p>
         </div>
       </div>
       <div className="st-footer-bottom">
-        <div>© {year} Синтегратор. Все права защищены.</div>
+        <div>
+          © {year} {footer.brandName}. {footer.bottom.rights}
+        </div>
         <div className="st-footer-soc">
-          <Link to="/contacts">LinkedIn</Link>
-          <Link to="/contacts">Telegram</Link>
+          {footer.bottom.socials.map((s) => (
+            <Link key={s.label} to={s.path}>
+              {s.label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

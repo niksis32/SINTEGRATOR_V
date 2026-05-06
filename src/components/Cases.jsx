@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { caseIndustrial, caseLogistics, casesHero } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
 export default function Cases() {
+  const { caseIndustrial, caseLogistics, casesHero } = useSiteData();
   return (
     <section id="cases">
       <div className="st-container st-cases-hero">

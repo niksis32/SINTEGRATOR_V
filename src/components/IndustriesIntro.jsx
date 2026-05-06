@@ -1,6 +1,7 @@
-import { industriesIntro } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 
 export default function IndustriesIntro() {
+  const { industriesIntro } = useSiteData();
   return (
     <section className="st-container st-industries-intro">
       <div className="st-hero-grid">

@@ -1,8 +1,38 @@
 import { Link } from 'react-router-dom';
-import { industriesMeta, methodologyIntro, methodologySteps, industryBlocks } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
+import { usePreferences } from '../contexts/PreferencesContext.jsx';
 import MaterialIcon from './MaterialIcon.jsx';
 
 export default function Industries() {
+  const { industriesMeta, methodologyIntro, methodologySteps, industryBlocks } = useSiteData();
+  const { lang } = usePreferences();
+
+  const labels = {
+    manufacturing: lang === 'ru' ? 'Производство' : 'Manufacturing',
+    manufacturingLead:
+      lang === 'ru'
+        ? 'Автоматизация цеховых процессов, внедрение MES-систем и предиктивная аналитика оборудования для заводов нового поколения.'
+        : 'Shop-floor automation, MES rollout, and predictive equipment analytics for next-generation plants.',
+    kpi1: lang === 'ru' ? 'Операционный KPI' : 'Operational KPI',
+    kpi1Suffix: lang === 'ru' ? 'снижение издержек' : 'cost reduction',
+    kpi2: lang === 'ru' ? 'Опыт внедрения' : 'Implementation track record',
+    kpi2Suffix: lang === 'ru' ? 'крупных заводов' : 'large plants',
+    logistics: lang === 'ru' ? 'Логистика' : 'Logistics',
+    logisticsLead:
+      lang === 'ru'
+        ? 'WMS нового поколения и сквозной мониторинг цепей поставок в реальном времени.'
+        : 'Next-gen WMS and real-time end-to-end supply chain monitoring.',
+    opsPerDay: lang === 'ru' ? 'ОПЕРАЦИЙ В СУТКИ' : 'OPS PER DAY',
+    exploreCases: lang === 'ru' ? 'СМОТРЕТЬ КЕЙСЫ' : 'EXPLORE CASES',
+    b2b: lang === 'ru' ? 'B2B Опт' : 'B2B Wholesale',
+    b2bLead:
+      lang === 'ru'
+        ? 'Цифровые платформы для дистрибуции: от личного кабинета до автоматического ценообразования.'
+        : 'Distribution platforms: from self-service accounts to automated pricing.',
+    avgCheck: lang === 'ru' ? 'Рост чека' : 'Average order growth',
+    transparency: lang === 'ru' ? 'Прозрачность' : 'Transparency',
+  };
+
   return (
     <section id="industries" className="st-industries blueprint-grid st-container">
       <div className="micro-grid" style={{ position: 'absolute', inset: 0, opacity: 0.35, pointerEvents: 'none' }} />
@@ -33,24 +63,23 @@ export default function Industries() {
                     <span className="domain-label">DOMAIN / MANUFACTURING</span>
                   </div>
                   <h3 className="st-display-sm" style={{ marginBottom: '2rem', fontFamily: 'var(--font-head)' }}>
-                    Производство
+                    {labels.manufacturing}
                   </h3>
                   <p className="st-text-muted" style={{ fontSize: '1.0625rem', maxWidth: '36rem' }}>
-                    Автоматизация цеховых процессов, внедрение MES-систем и предиктивная аналитика оборудования для заводов нового
-                    поколения.
+                    {labels.manufacturingLead}
                   </p>
                 </div>
                 <div className="st-kpi-grid">
                   <div>
-                    <p className="st-kpi-label">Операционный KPI</p>
+                    <p className="st-kpi-label">{labels.kpi1}</p>
                     <p className="st-kpi-value">
-                      24% <span className="st-kpi-suffix">снижение издержек</span>
+                      24% <span className="st-kpi-suffix">{labels.kpi1Suffix}</span>
                     </p>
                   </div>
                   <div>
-                    <p className="st-kpi-label">Опыт внедрения</p>
+                    <p className="st-kpi-label">{labels.kpi2}</p>
                     <p className="st-kpi-value">
-                      15+ <span className="st-kpi-suffix">крупных заводов</span>
+                      15+ <span className="st-kpi-suffix">{labels.kpi2Suffix}</span>
                     </p>
                   </div>
                 </div>
@@ -66,10 +95,10 @@ export default function Industries() {
                     <MaterialIcon name="local_shipping" style={{ color: '#fff', fontSize: '1.5rem' }} />
                   </div>
                   <h3 className="st-card-title st-display-sm" style={{ fontSize: '1.875rem', color: '#fff' }}>
-                    Логистика
+                    {labels.logistics}
                   </h3>
                   <p className="st-text-muted" style={{ fontSize: '0.875rem', maxWidth: '22rem' }}>
-                    WMS нового поколения и сквозной мониторинг цепей поставок в реальном времени.
+                    {labels.logisticsLead}
                   </p>
                 </div>
                 <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -78,11 +107,11 @@ export default function Industries() {
                       4.2 млн
                     </div>
                     <div className="st-kpi-suffix" style={{ color: '#94a3b8', display: 'block', marginTop: '0.25rem' }}>
-                      ОПЕРАЦИЙ В СУТКИ
+                      {labels.opsPerDay}
                     </div>
                   </div>
                   <Link className="st-link-arrow" to="/cases" style={{ color: '#fff' }}>
-                    EXPLORE CASES <MaterialIcon name="arrow_right_alt" style={{ fontSize: '1rem' }} />
+                    {labels.exploreCases} <MaterialIcon name="arrow_right_alt" style={{ fontSize: '1rem' }} />
                   </Link>
                 </div>
               </div>
@@ -94,16 +123,16 @@ export default function Industries() {
                 <div>
                   <MaterialIcon name="hub" className="" style={{ fontSize: '2.5rem', opacity: 0.4, color: 'var(--primary)', marginBottom: '2rem', display: 'block' }} />
                   <h3 className="st-card-title" style={{ fontSize: '1.5rem', fontFamily: 'var(--font-head)', marginBottom: '1rem' }}>
-                    B2B Опт
+                    {labels.b2b}
                   </h3>
                   <p className="st-text-muted" style={{ fontSize: '0.875rem', marginBottom: '2rem' }}>
-                    Цифровые платформы для дистрибуции: от личного кабинета до автоматического ценообразования.
+                    {labels.b2bLead}
                   </p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid rgba(197, 198, 204, 0.3)', paddingBottom: '1rem' }}>
                     <span className="st-kpi-suffix" style={{ fontSize: '0.625rem' }}>
-                      Рост чека
+                      {labels.avgCheck}
                     </span>
                     <span className="st-kpi-value" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>
                       +45%
@@ -111,7 +140,7 @@ export default function Industries() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid rgba(197, 198, 204, 0.3)', paddingBottom: '1rem' }}>
                     <span className="st-kpi-suffix" style={{ fontSize: '0.625rem' }}>
-                      Прозрачность
+                      {labels.transparency}
                     </span>
                     <span className="st-kpi-value" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}>
                       100%
@@ -122,7 +151,7 @@ export default function Industries() {
             </div>
 
             {/* Methodology 8 */}
-            <div className="st-span-8 st-surface-muted">
+            <div className="st-span-8 st-surface-muted st-methodology-panel">
               <div className="micro-grid" style={{ position: 'absolute', inset: 0, opacity: 0.22, pointerEvents: 'none' }} />
               <div className="pad-industry-xl st-methodology-inner">
                 <div>
@@ -132,13 +161,13 @@ export default function Industries() {
                   <p className="st-text-muted" style={{ marginBottom: '2rem' }}>
                     {methodologyIntro.text}
                   </p>
-                  <div className="st-tag-cloud">
+                  <div className="st-tag-cloud st-tag-cloud--method">
                     {methodologyIntro.tags.map((t) => (
                       <span key={t}>{t}</span>
                     ))}
                   </div>
                 </div>
-                <div className="st-method-steps">
+                <div className="st-method-steps st-method-steps--card">
                   {methodologySteps.map(([num, label]) => (
                     <div className="st-method-step" key={num}>
                       <span className="st-method-num">{num}</span>

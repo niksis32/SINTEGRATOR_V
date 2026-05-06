@@ -1,8 +1,9 @@
 import Services from '../components/Services.jsx';
 import CtaBand from '../components/CtaBand.jsx';
-import { ctaAfterServices } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 
 export default function ServicesPage() {
+  const { ctaAfterServices } = useSiteData();
   return (
     <>
       <Services />

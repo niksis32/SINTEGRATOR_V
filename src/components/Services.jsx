@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { architectureBlueprint, servicesBento, servicesHero } from '../data/siteData.js';
+import { useSiteData } from '../data/siteData.js';
 import MaterialIcon from './MaterialIcon.jsx';
 
 function BentoCard(item) {
@@ -90,6 +90,7 @@ function BentoCard(item) {
 }
 
 export default function Services() {
+  const { architectureBlueprint, servicesBento, servicesHero } = useSiteData();
   return (
     <section id="services">
       <div className="st-container st-services-hero">
@@ -129,20 +130,41 @@ export default function Services() {
             {architectureBlueprint.title}
           </h2>
         </div>
-        <div className="st-schema">
-          {architectureBlueprint.columns.map((col) => (
-            <div className={`st-schema-card ${col.highlight ? 'st-schema-mid' : ''}`.trim()} key={col.title}>
-              <div className={col.highlight ? 'st-schema-ring st-schema-ring--grad' : 'st-schema-ring'}>
-                <MaterialIcon name={col.icon} style={{ fontSize: '1.75rem' }} filled={col.highlight} />
+        <div
+          className="st-blueprint-shell"
+          onMouseMove={(e) => {
+            const el = e.currentTarget;
+            const r = el.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width;
+            const y = (e.clientY - r.top) / r.height;
+            el.style.setProperty('--mx', `${(x - 0.5).toFixed(4)}`);
+            el.style.setProperty('--my', `${(y - 0.5).toFixed(4)}`);
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget;
+            el.style.setProperty('--mx', '0');
+            el.style.setProperty('--my', '0');
+          }}
+        >
+          <div className="st-schema">
+            {architectureBlueprint.columns.map((col) => (
+              <div
+                className={`st-schema-card ${col.highlight ? 'st-schema-mid' : ''}`.trim()}
+                data-highlight={col.highlight ? '1' : '0'}
+                key={col.title}
+              >
+                <div className={col.highlight ? 'st-schema-ring st-schema-ring--grad' : 'st-schema-ring'}>
+                  <MaterialIcon name={col.icon} style={{ fontSize: '1.75rem' }} filled={col.highlight} />
+                </div>
+                <h4 className="domain-label" style={{ marginBottom: '0.75rem', letterSpacing: '0.12em' }}>
+                  {col.title}
+                </h4>
+                <p className="st-text-muted" style={{ fontSize: '0.75rem' }}>
+                  {col.text}
+                </p>
               </div>
-              <h4 className="domain-label" style={{ marginBottom: '0.75rem', letterSpacing: '0.12em' }}>
-                {col.title}
-              </h4>
-              <p className="st-text-muted" style={{ fontSize: '0.75rem' }}>
-                {col.text}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

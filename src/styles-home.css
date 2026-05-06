@@ -3,6 +3,10 @@
   background-size: 40px 40px;
 }
 
+[data-theme='dark'] .architectural-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(183, 197, 230, 0.16) 1px, transparent 0);
+}
+
 .st-home-root {
   overflow-x: hidden;
 }
@@ -29,11 +33,26 @@
   background: linear-gradient(to right, var(--background) 0%, transparent 55%);
 }
 
+[data-theme='dark'] .st-home-hero-gradient {
+  /* Sharper readability in dark: stronger left-side overlay */
+  background: linear-gradient(to right, rgba(11, 18, 32, 0.78) 0%, rgba(11, 18, 32, 0.35) 55%, transparent 72%);
+}
+
 .st-home-hero-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.6;
+}
+
+/* Light theme: add a touch of contrast */
+:root:not([data-theme='dark']) .st-home-hero-photo {
+  filter: brightness(0.94) contrast(1.1) saturate(0.98);
+}
+
+[data-theme='dark'] .st-home-hero-photo {
+  opacity: 0.72;
+  filter: brightness(1.05) contrast(1.12) saturate(1.05);
 }
 
 .st-home-hero-content {
@@ -183,9 +202,17 @@
 .st-home-sphere-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--on-surface), transparent);
+  background: linear-gradient(to top, rgba(13, 28, 46, 0.92), rgba(13, 28, 46, 0));
   opacity: 0.8;
   pointer-events: none;
+}
+
+[data-theme='dark'] .st-home-sphere-overlay {
+  opacity: 0.68;
+}
+
+[data-theme='dark'] .st-home-sphere-card:hover .st-home-sphere-overlay {
+  opacity: 0.56;
 }
 
 .st-home-sphere-caption {
@@ -259,6 +286,11 @@
   padding: 2.5rem;
   box-shadow: 0 25px 60px rgba(13, 28, 46, 0.12);
   border-top: 1px solid #fff;
+}
+
+[data-theme='dark'] .st-home-chaos-frame {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+  border-top-color: rgba(234, 241, 255, 0.08);
 }
 
 .st-home-chaos-frame > img {
@@ -348,6 +380,11 @@
     border-color 0.35s;
 }
 
+[data-theme='dark'] .st-home-module-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border-top-color: rgba(148, 163, 184, 0.08);
+}
+
 .st-home-module-card:hover {
   box-shadow: 0 20px 50px rgba(13, 28, 46, 0.12);
   border-top-color: var(--primary);
@@ -359,6 +396,10 @@
   background: var(--surface-container-high);
   border: 1px solid rgba(197, 198, 204, 0.25);
   margin-bottom: 1.75rem;
+}
+
+[data-theme='dark'] .st-home-module-thumb {
+  border-color: rgba(148, 163, 184, 0.14);
 }
 
 .st-home-module-thumb img {
@@ -473,6 +514,18 @@
   transition: background 0.2s;
 }
 
+[data-theme='dark'] .st-btn-dark-lg {
+  /* Dark theme: make CTA button darker (contrast) */
+  background: rgba(15, 26, 43, 0.9);
+  color: rgba(234, 241, 255, 0.92);
+  border: 1px solid rgba(183, 197, 230, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme='dark'] .st-btn-dark-lg:hover {
+  background: rgba(24, 42, 72, 0.92);
+}
+
 .st-btn-dark-lg:hover {
   background: var(--primary-container);
 }
@@ -502,12 +555,24 @@
   justify-content: center;
 }
 
+[data-theme='dark'] .st-home-keyoffer-frame {
+  border-color: rgba(234, 241, 255, 0.10);
+  background: rgba(15, 26, 43, 0.22);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(234, 241, 255, 0.05);
+}
+
 .st-home-keyoffer-frame::before {
   content: '';
   position: absolute;
   inset: -0.65rem;
   border: 2px solid rgba(166, 178, 201, 0.35);
   pointer-events: none;
+}
+
+[data-theme='dark'] .st-home-keyoffer-frame::before {
+  border-color: rgba(183, 197, 230, 0.18);
 }
 
 .st-home-keyoffer-iconbox {
@@ -518,6 +583,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+[data-theme='dark'] .st-home-keyoffer-iconbox {
+  /* Make inner square darker for contrast */
+  background: rgba(15, 26, 43, 0.55);
+  border: 1px solid rgba(183, 197, 230, 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25),
+    0 25px 60px rgba(0, 0, 0, 0.45);
 }
 
 .st-home-port-head {
@@ -568,13 +642,30 @@
 .st-home-port-imgshade {
   position: absolute;
   inset: 0;
-  background: var(--on-surface);
+  background: rgba(13, 28, 46, 0.9);
   opacity: 0.2;
   transition: opacity 0.3s;
 }
 
 .st-home-port-card:hover .st-home-port-imgshade {
   opacity: 0;
+}
+
+[data-theme='dark'] .st-home-port-imgshade {
+  opacity: 0.16;
+}
+
+[data-theme='dark'] .st-home-port-card:hover .st-home-port-imgshade {
+  opacity: 0.08;
+}
+
+[data-theme='dark'] .st-home-port-imgwrap img {
+  filter: grayscale(0.6) brightness(0.98) contrast(1.06);
+  transition: transform 0.65s ease, filter 0.35s ease;
+}
+
+[data-theme='dark'] .st-home-port-card:hover .st-home-port-imgwrap img {
+  filter: grayscale(0.25) brightness(1.06) contrast(1.1);
 }
 
 .st-home-port-ht {
@@ -588,6 +679,10 @@
   background: var(--surface-container-low);
   border-block: 1px solid rgba(197, 198, 204, 0.22);
   padding-block: clamp(4rem, 10vw, 8rem);
+}
+
+[data-theme='dark'] .st-home-protocol {
+  border-block-color: rgba(148, 163, 184, 0.14);
 }
 
 .st-home-protocol-title {
@@ -662,6 +757,24 @@
   margin: 0 auto 1.75rem;
 }
 
+.icon-3d-box .material-symbols-outlined {
+  transition: color 0.35s ease, filter 0.35s ease;
+  color: var(--primary);
+}
+
+[data-theme='dark'] .icon-3d-box {
+  background: linear-gradient(145deg, rgba(20, 36, 58, 0.88), rgba(11, 18, 32, 0.88));
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(234, 241, 255, 0.06);
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+[data-theme='dark'] .icon-3d-box .material-symbols-outlined {
+  color: rgba(234, 241, 255, 0.78);
+  filter: none;
+}
+
 .st-home-protocol-step:hover .icon-3d-box {
   transform: translateY(-10px) rotateX(8deg) rotateY(8deg);
   background: linear-gradient(145deg, #3b82f6, #2563eb);
@@ -669,6 +782,12 @@
     0 18px 36px rgba(59, 130, 246, 0.28),
     0 0 18px rgba(59, 130, 246, 0.18);
   border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme='dark'] .st-home-protocol-step:hover .icon-3d-box {
+  box-shadow:
+    0 16px 32px rgba(59, 130, 246, 0.22),
+    0 0 10px rgba(59, 130, 246, 0.12);
 }
 
 .st-home-protocol-step:hover .icon-3d-box .material-symbols-outlined {
@@ -679,6 +798,10 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 24;
+}
+
+[data-theme='dark'] .st-home-protocol-step:hover .icon-3d-box .material-symbols-outlined {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.25));
 }
 
 .st-home-closing {
