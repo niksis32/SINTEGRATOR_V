@@ -5,12 +5,15 @@ import './styles.css';
 import './styles-home.css';
 import App from './App.jsx';
 import { PreferencesProvider } from './contexts/PreferencesContext.jsx';
+import { AuthProvider } from './contexts/AuthContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PreferencesProvider>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </BrowserRouter>
     </PreferencesProvider>
   </React.StrictMode>,

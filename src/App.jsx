@@ -8,6 +8,7 @@ import ServicesPage from './pages/ServicesPage.jsx';
 import CasesPage from './pages/CasesPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import VerifyEmailPage from './pages/VerifyEmailPage.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/cases" element={<CasesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactPage />} />
+          <Route path="/verify-email" element={<VerifyEmailPage />} />
         </Routes>
       </main>
       <Footer />
