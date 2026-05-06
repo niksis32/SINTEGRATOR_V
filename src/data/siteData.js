@@ -42,7 +42,7 @@ export const homePage = {
         tag: 'Supply Chain',
         title: 'Logistics',
         image:
-          'https://lh3.googleusercontent.com/aida/ADBb0ugIRETEva0jM1causNvKnRbBArSMhPLmVOaGi5cEJCFvS91-nKoYPvk72XRSbVSSt4nLWbvCxufj9uSqCdqS_bgQRXhFi4G0vHoQEIl6vrHKNN7CtqqLHdqrarlgaSjSS9y4JehufQCnCtwfMR3Z1fWLIejLiT_1JpzpbP7RcwbQNny4PVYKtMPKoQicQ0Y285WYeLz55V1iqmilMGrcJcLHHNFFBzE32J0Y10wc7Gsn7DDNAd9iJZkAoo',
+          '/img/logistics.png',
         alt: 'Logistics',
       },
       {
@@ -82,7 +82,7 @@ export const homePage = {
         title: 'CRM',
         body: 'Интеллектуальное управление взаимоотношениями с клиентами в B2B секторе.',
         image:
-          'https://lh3.googleusercontent.com/aida/ADBb0uhTfl3v0NhFfIATvUAsLquX8HV-Y3ud0Tlwbt6PmdpU8SSEUahfVcfjI8Iy8iNlsD9nMiZnScJlZLWXyK-efO7rluMp2d_IMXjUJoUIapG9Fb9sYTtcQfT0_4QE-NIU7wZGLawRIq-iyUpHkeF4F6GzvV1AqxKAsnrCGfENADjHdM7VHm_1OlZXfhLQ50_ROfyVTQ1U1KpUExhSqx9VUy7nbykZa7bzckM4zKJGXNtNJl5e_oRnTEPTu8awQG1KN4LAU4BXsGWMI0Q',
+          '/img/crm.png',
       },
       {
         title: 'ERP',

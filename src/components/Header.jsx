@@ -5,8 +5,8 @@ export default function Header() {
   return (
     <header className="st-header">
       <nav className="st-nav" aria-label="Основное меню">
-        <Link className="st-logo" to="/">
-          Синтегратор
+        <Link className="st-logo st-logo--en-wordmark" to="/">
+          SINTEGRATOR
         </Link>
         <div className="st-nav-links">
           {navRoutes.map((item) => (
