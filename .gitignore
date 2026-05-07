@@ -4,3 +4,12 @@ dist/
 .env.local
 .env.*.local
 .vscode/
+
+# sensitive deploy/log artifacts (do not commit)
+/DEPLOY_JINO.md
+/Лог с сервера JINO по установке сайта  .txt
+/sintegrator.site.txt
+
+# do not commit local smtp secrets (optional)
+/public/api/send-verification.secret.php
+/public/private/send-verification.secret.php

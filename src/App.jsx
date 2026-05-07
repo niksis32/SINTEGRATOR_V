@@ -9,6 +9,7 @@ import CasesPage from './pages/CasesPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx';
+import EmailTestPage from './pages/EmailTestPage.jsx';
 import SeoHead from './components/SeoHead.jsx';
 import MaintenanceScreen from './components/MaintenanceScreen.jsx';
 import { hasMaintenanceBypass, maintenanceMode } from './config/siteVisibility.js';
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
+          <Route path="/test-email" element={<EmailTestPage />} />
         </Routes>
       </main>
       <Footer />
