@@ -1,0 +1,12 @@
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Security: never expose secrets/runtime files
+<FilesMatch "(\.secret\.php|chatbot\.runtime\.json)$">
+  Require all denied
+</FilesMatch>
+
+# If your hosting uses AddHandler / SetHandler for PHP, ensure .php is executed by PHP handler.
+# (Most shared hostings enable PHP by default for .php files.)
+

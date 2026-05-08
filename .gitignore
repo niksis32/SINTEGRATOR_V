@@ -7,6 +7,7 @@ dist/
 
 # sensitive deploy/log artifacts (do not commit)
 /DEPLOY_JINO.md
+/DEPLOY_JINO_New.md
 /Лог с сервера JINO по установке сайта  .txt
 /sintegrator.site.txt
 
