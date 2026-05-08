@@ -13,6 +13,7 @@ import EmailTestPage from './pages/EmailTestPage.jsx';
 import SeoHead from './components/SeoHead.jsx';
 import MaintenanceScreen from './components/MaintenanceScreen.jsx';
 import { hasMaintenanceBypass, maintenanceMode } from './config/siteVisibility.js';
+import ChatWidget from './components/ChatWidget.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,6 +62,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }
