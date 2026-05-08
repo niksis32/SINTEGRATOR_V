@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 /**
  * POST /api/chatbot-send.php
- * Body (JSON): { "message": "text", "pageUrl": "https://..." }
+ * Body (JSON): { "message": "text", "pageUrl": "https://...", "toChatId": "10000000" }
  *
  * Sends incoming website chat message to manager via GREEN-API (MAX).
  *
@@ -20,6 +20,7 @@ declare(strict_types=1);
  *   'manager_chat_id' => '10000000', // MAX chatId
  *   // optional:
  *   'project_label' => 'SINTEGRATOR',
+ *   'allow_override_chat_id' => false, // allow "toChatId" from request body (recommended: keep false)
  * ]
  */
 
@@ -29,6 +30,35 @@ function json_out(int $status, array $payload): void {
   http_response_code($status);
   echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
   exit;
+}
+
+// Make fatal errors visible to the client during integration
+set_exception_handler(function (Throwable $e): void {
+  json_out(500, [
+    'ok' => false,
+    'error' => 'php_exception',
+    'message' => $e->getMessage(),
+  ]);
+});
+
+register_shutdown_function(function (): void {
+  $err = error_get_last();
+  if (!$err) return;
+  $type = (int)($err['type'] ?? 0);
+  // Fatal types
+  if (!in_array($type, [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) return;
+  json_out(500, [
+    'ok' => false,
+    'error' => 'php_fatal',
+    'message' => (string)($err['message'] ?? ''),
+  ]);
+});
+
+if (!function_exists('curl_init')) {
+  json_out(500, ['ok' => false, 'error' => 'curl_missing']);
+}
+if (!function_exists('mb_strlen')) {
+  json_out(500, ['ok' => false, 'error' => 'mbstring_missing']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -101,10 +131,26 @@ function load_chatbot_config(): array {
   ];
 }
 
+function runtime_path(): string {
+  return dirname(__DIR__) . DIRECTORY_SEPARATOR . 'private' . DIRECTORY_SEPARATOR . 'chatbot.runtime.json';
+}
+
+function read_runtime_manager_chat_id(): string {
+  $path = runtime_path();
+  if (!is_file($path)) return '';
+  $raw = @file_get_contents($path);
+  if (!is_string($raw) || trim($raw) === '') return '';
+  $data = json_decode($raw, true);
+  if (!is_array($data)) return '';
+  $v = $data['manager_chat_id'] ?? '';
+  return is_string($v) ? trim($v) : '';
+}
+
 function build_green_send_message_url(string $baseUrl, string $idInstance, string $apiToken): string {
   $baseUrl = rtrim($baseUrl, '/');
   // GREEN-API allows calling MAX methods via waInstance... for unified API
-  return $baseUrl . '/waInstance' . rawurlencode($idInstance) . '/SendMessage/' . rawurlencode($apiToken);
+  // Use method name exactly as in GREEN-API examples: sendMessage
+  return $baseUrl . '/waInstance' . rawurlencode($idInstance) . '/sendMessage/' . rawurlencode($apiToken);
 }
 
 function http_post_json(string $url, array $body, int $timeoutSeconds = 12): array {
@@ -151,12 +197,13 @@ function http_post_json(string $url, array $body, int $timeoutSeconds = 12): arr
     ];
   }
 
-  return ['ok' => true, 'response' => $decoded];
+  return ['ok' => true, 'httpCode' => $httpCode, 'response' => $decoded];
 }
 
 $body = read_json_body();
 $message = safe_trim($body['message'] ?? '');
 $pageUrl = safe_trim($body['pageUrl'] ?? '');
+$toChatId = safe_trim($body['toChatId'] ?? '');
 
 if ($message === '') {
   json_out(400, ['ok' => false, 'error' => 'bad_request']);
@@ -166,7 +213,8 @@ if ($message === '') {
 $message = clip($message, 2000);
 $pageUrl = clip($pageUrl, 400);
 
-rate_limit_check(8);
+// Allow sending multiple messages in a row without false negatives (admin test + widget, or fast user typing)
+rate_limit_check(2);
 
 $cfg = load_chatbot_config();
 $apiUrl = (string)($cfg['green_api_url'] ?? '');
@@ -174,9 +222,29 @@ $idInstance = (string)($cfg['id_instance'] ?? '');
 $apiToken = (string)($cfg['api_token'] ?? '');
 $managerChatId = (string)($cfg['manager_chat_id'] ?? '');
 $label = (string)($cfg['project_label'] ?? 'SINTEGRATOR');
+$allowOverride = ($cfg['allow_override_chat_id'] ?? false) === true;
 
 if ($apiUrl === '' || $idInstance === '' || $apiToken === '' || $managerChatId === '') {
   json_out(500, ['ok' => false, 'error' => 'chatbot_not_configured']);
+}
+
+$runtimeManager = read_runtime_manager_chat_id();
+if ($runtimeManager !== '') {
+  $managerChatId = $runtimeManager;
+}
+
+$targetChatId = $managerChatId;
+if ($allowOverride && $toChatId !== '') {
+  $raw = clip($toChatId, 64);
+  // Support phone input for test: "79991234567" => "79991234567@c.us"
+  // If admin provides already formatted chatId (contains "@"), use as-is.
+  if (strpos($raw, '@') === false) {
+    $digits = preg_replace('/\D+/', '', $raw);
+    if (is_string($digits) && $digits !== '') {
+      $raw = $digits . '@c.us';
+    }
+  }
+  $targetChatId = $raw;
 }
 
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
@@ -191,13 +259,37 @@ $text = "💬 {$label} — сообщение с сайта\n"
 
 $url = build_green_send_message_url($apiUrl, $idInstance, $apiToken);
 $result = http_post_json($url, [
-  'chatId' => $managerChatId,
+  'chatId' => $targetChatId,
   'message' => $text,
 ]);
 
 if (!$result['ok']) {
-  json_out(502, ['ok' => false, 'error' => 'send_failed', 'details' => $result['error'] ?? 'unknown']);
+  json_out(502, [
+    'ok' => false,
+    'error' => 'send_failed',
+    'details' => $result['error'] ?? 'unknown',
+    'green' => [
+      'httpCode' => $result['httpCode'] ?? null,
+      'response' => $result['response'] ?? null,
+    ],
+  ]);
 }
 
-json_out(200, ['ok' => true]);
+$greenResponse = $result['response'] ?? null;
+$messageId = null;
+if (is_array($greenResponse)) {
+  // Common variants across products
+  if (isset($greenResponse['idMessage'])) $messageId = (string)$greenResponse['idMessage'];
+  elseif (isset($greenResponse['messageId'])) $messageId = (string)$greenResponse['messageId'];
+}
+
+json_out(200, [
+  'ok' => true,
+  'targetChatId' => $targetChatId,
+  'green' => [
+    'httpCode' => $result['httpCode'] ?? 200,
+    'messageId' => $messageId,
+    'response' => $greenResponse,
+  ],
+]);
 

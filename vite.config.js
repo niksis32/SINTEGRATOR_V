@@ -35,5 +35,24 @@ export default defineConfig(({ command, mode }) => {
   }
   return {
     plugins: [react()],
+    server: {
+      /**
+       * Local dev: Vite cannot execute PHP.
+       * Configure your PHP server (Apache/Nginx/OpenServer/XAMPP/php -S) to serve the `public/` folder
+       * and proxy /api requests to it.
+       *
+       * Example (PHP built-in):
+       *   php -S 127.0.0.1:8081 -t public
+       * Then set:
+       *   VITE_PHP_API_ORIGIN=http://127.0.0.1:8081
+       */
+      proxy: {
+        '/api': {
+          target: env.VITE_PHP_API_ORIGIN || 'http://127.0.0.1:8081',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
   };
 });

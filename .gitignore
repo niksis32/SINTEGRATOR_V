@@ -13,3 +13,8 @@ dist/
 # do not commit local smtp secrets (optional)
 /public/api/send-verification.secret.php
 /public/private/send-verification.secret.php
+
+# do not commit chatbot secrets/runtime settings
+/public/api/chatbot.secret.php
+/public/private/chatbot.secret.php
+/public/private/chatbot.runtime.json

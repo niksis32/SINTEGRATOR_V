@@ -53,6 +53,9 @@ export default function ChatWidget() {
 
   const listRef = useRef(null);
   const textareaRef = useRef(null);
+  const debug =
+    (import.meta?.env?.DEV ?? false) ||
+    (typeof window !== 'undefined' && window.localStorage?.getItem('st_chat_debug') === '1');
 
   useEffect(() => {
     saveState({ open, messages });
@@ -84,19 +87,37 @@ export default function ChatWidget() {
     setDraft('');
 
     try {
+      const payload = {
+        message: msg,
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+      };
+      if (debug) {
+        console.groupCollapsed('[ChatWidget] send');
+        console.debug('payload', payload);
+      }
       const res = await fetch('/api/chatbot-send.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: msg,
-          pageUrl: typeof window !== 'undefined' ? window.location.href : '',
-        }),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) {
+        if (debug) {
+          console.debug('http', res.status, res.statusText);
+          console.debug('response', data);
+          console.groupEnd();
+        }
         const code = data?.error ? String(data.error) : `http_${res.status}`;
         throw new Error(code);
+      }
+      if (debug) {
+        console.debug('http', res.status, res.statusText);
+        console.debug('server.targetChatId', data?.targetChatId);
+        console.debug('green.httpCode', data?.green?.httpCode);
+        console.debug('green.messageId', data?.green?.messageId);
+        console.debug('green.response', data?.green?.response);
+        console.groupEnd();
       }
 
       setMessages((prev) => [
@@ -109,7 +130,20 @@ export default function ChatWidget() {
         },
       ]);
     } catch (e) {
-      setError('Не удалось отправить. Попробуйте ещё раз через минуту.');
+      const code = String(e?.message || '');
+      if (code === 'rate_limited' || code.startsWith('http_429')) {
+        setError('Слишком часто. Подождите пару секунд и отправьте ещё раз.');
+      } else {
+        setError('Не удалось отправить. Попробуйте ещё раз через минуту.');
+      }
+      if (debug) {
+        console.debug('[ChatWidget] error', e);
+        try {
+          console.groupEnd();
+        } catch {
+          // ignore
+        }
+      }
       setMessages((prev) => [
         ...prev,
         {
